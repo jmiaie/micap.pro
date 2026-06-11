@@ -30,58 +30,77 @@ One-time setup after the first deploy:
 
 ## DNS (domain registered at Porkbun)
 
-GitHub Pages needs the following records:
+As of June 2026 the live zone is a leftover **Cloudflare** zone
+(`jerry.ns.cloudflare.com` / `sarah.ns.cloudflare.com`) from the GoDaddy
+era, with no known account access. It serves the Google Workspace mail
+records (which is why `jmilam@micap.pro` kept working after GoDaddy was cut
+off) plus website records pointing at the dead GoDaddy origin.
 
-| Type  | Host  | Value                |
-| ----- | ----- | -------------------- |
-| A     | @     | `185.199.108.153`    |
-| A     | @     | `185.199.109.153`    |
-| A     | @     | `185.199.110.153`    |
-| A     | @     | `185.199.111.153`    |
-| CNAME | `www` | `jmiaie.github.io`   |
+The migration plan: **stage the complete record set in Porkbun's DNS
+editor first** (those records are dormant while the nameservers point
+elsewhere), **then** reset the nameservers to Porkbun defaults. During
+propagation both zones answer the same Google MX targets, so mail is never
+interrupted. DNSSEC is not enabled on the domain (verified June 2026), so
+the nameserver switch carries no DS-record risk.
 
-> **Important — email lives in this DNS zone.** The domain delegates to
-> Cloudflare nameservers (`jerry.ns.cloudflare.com` /
-> `sarah.ns.cloudflare.com`), and that Cloudflare zone serves the Google
-> Workspace MX/SPF records that keep `jmilam@micap.pro` (and aliases)
-> working. **Do not reset nameservers to Porkbun defaults** without first
-> recreating the mail records below — mail would start failing within the
-> hour.
->
-> **Recommended path:** keep the Cloudflare nameservers and edit only the
-> website records in the Cloudflare dashboard: replace the existing `@`
-> A/CNAME records with the four A records above and add/replace the `www`
-> CNAME. Set them to **DNS only** (grey cloud, not proxied) so GitHub can
-> issue the HTTPS certificate.
+### 1. Stage records at Porkbun
 
-### Mail records (do not remove; recreate first if ever moving DNS)
+Delete Porkbun's default email-forwarding records first — they would
+otherwise hijack Google Workspace mail the moment the nameservers switch:
 
-| Type | Host             | Value                                                                                              |
-| ---- | ---------------- | -------------------------------------------------------------------------------------------------- |
-| MX   | @                | `1 aspmx.l.google.com`                                                                              |
-| MX   | @                | `5 alt1.aspmx.l.google.com`                                                                         |
-| MX   | @                | `5 alt2.aspmx.l.google.com`                                                                         |
-| MX   | @                | `10 alt3.aspmx.l.google.com`                                                                        |
-| MX   | @                | `10 alt4.aspmx.l.google.com`                                                                        |
-| TXT  | @                | `v=spf1 include:spf.em.secureserver.net include:secureserver.net include:_spf.google.com ~all`     |
-| TXT  | @                | `google-site-verification=1au0H4JOyOpj_P2Lxl7DKorG0B_PdxIlVzUt64APmUE`                              |
-| TXT  | `_dmarc`         | `v=DMARC1; p=none; rua=mailto:dmarc_rua@onsecureserver.net`                                         |
+- ~~MX `fwd1.porkbun.com` (prio 10)~~
+- ~~MX `fwd2.porkbun.com` (prio 20)~~
+- ~~TXT `v=spf1 include:_spf.porkbun.com ~all`~~
 
-Optional mail hygiene (no urgency, unrelated to the website):
+Then create:
 
-- SPF still includes GoDaddy's `secureserver.net` servers, which no longer
-  send for this domain. It can be trimmed to
-  `v=spf1 include:_spf.google.com ~all`.
-- DMARC aggregate reports go to a dead GoDaddy address; repoint `rua=` to a
-  monitored mailbox (or a DMARC reporting service) if reports are wanted.
-- DKIM with the standard Google selector (`google._domainkey`) is not
-  published. It can be enabled in Google Admin → Apps → Google Workspace →
-  Gmail → Authenticate email, then adding the TXT record it generates.
+| Type  | Host     | Answer                                                                | Priority | Purpose            |
+| ----- | -------- | --------------------------------------------------------------------- | -------- | ------------------ |
+| MX    | (blank)  | `aspmx.l.google.com`                                                  | 1        | Google Workspace   |
+| MX    | (blank)  | `alt1.aspmx.l.google.com`                                             | 5        | Google Workspace   |
+| MX    | (blank)  | `alt2.aspmx.l.google.com`                                             | 5        | Google Workspace   |
+| MX    | (blank)  | `alt3.aspmx.l.google.com`                                             | 10       | Google Workspace   |
+| MX    | (blank)  | `alt4.aspmx.l.google.com`                                             | 10       | Google Workspace   |
+| TXT   | (blank)  | `v=spf1 include:_spf.google.com ~all`                                 | —        | SPF                |
+| TXT   | (blank)  | `google-site-verification=1au0H4JOyOpj_P2Lxl7DKorG0B_PdxIlVzUt64APmUE` | —        | Domain verification |
+| TXT   | `_dmarc` | `v=DMARC1; p=none`                                                    | —        | DMARC              |
+| A     | (blank)  | `185.199.108.153`                                                     | —        | GitHub Pages       |
+| A     | (blank)  | `185.199.109.153`                                                     | —        | GitHub Pages       |
+| A     | (blank)  | `185.199.110.153`                                                     | —        | GitHub Pages       |
+| A     | (blank)  | `185.199.111.153`                                                     | —        | GitHub Pages       |
+| CNAME | `www`    | `jmiaie.github.io`                                                    | —        | GitHub Pages       |
+
+Migration notes:
+
+- The SPF record is deliberately trimmed from the old zone's value: the
+  `secureserver.net` includes covered GoDaddy senders that no longer exist.
+- The old DMARC record sent aggregate reports to a dead GoDaddy address;
+  `p=none` keeps DMARC present without reports. Append
+  `; rua=mailto:jmilam@micap.pro` to receive the (XML, often noisy) reports.
+- `email.micap.pro` and `autodiscover.micap.pro` exist in the old zone as
+  GoDaddy/Outlook-era leftovers and are intentionally not carried over.
+- No DKIM selector is published in the old zone, so there is none to copy.
+  Enabling Google DKIM afterwards is recommended: Google Admin → Apps →
+  Google Workspace → Gmail → Authenticate email → generate the
+  `google._domainkey` TXT record and add it at Porkbun.
+
+### 2. Switch nameservers
+
+Porkbun → domain → **Nameservers** → reset to Porkbun defaults
+(`curitiba` / `fortaleza` / `maceio` / `salvador.ns.porkbun.com`). Most
+resolvers pick the change up within an hour or two; stragglers up to
+24–48 h. Mail is unaffected throughout because both old and new zones point
+MX at the same Google servers.
 
 ## Email
 
 Mail for `micap.pro` is hosted on **Google Workspace** (`jmilam@micap.pro`
-and aliases) and is routed by the MX records above — it is independent of
-the website records and of where the site is hosted. The site's published
-contact address is `manager@micap.pro`; confirm it exists as an alias or
-group in the Google Workspace Admin console.
+and aliases), routed by the MX records above — independent of the website
+and its hosting.
+
+The site's published contact address is `manager@micap.pro`, configured as
+an **email alias** of `jmilam@micap.pro` in the Google Admin console
+(Directory → Users → select user → User information → Email aliases). To
+reply *from* the address, add it in Gmail → Settings → Accounts → "Send
+mail as". If it ever needs a dedicated mailbox, delete the alias and create
+a `manager@` user (one Workspace license) — no DNS changes required.
