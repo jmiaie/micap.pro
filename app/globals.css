@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Theme tokens consumed by tailwind.config.ts (RGB triplets) */
+  --bg: 250 250 248;
+  --surface: 255 255 255;
+  --elevated: 244 244 241;
+  --border: 226 225 220;
+  --ink: 24 30 37;
+  --muted: 87 96 106;
+  --subtle: 140 147 156;
+  --accent: 15 95 82;
+  --accent-2: 173 122 49;
+
+  --font-sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
+  --font-display: var(--font-sans);
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-bg text-ink antialiased;
+}
+
+::selection {
+  background: rgb(var(--accent) / 0.15);
+}
