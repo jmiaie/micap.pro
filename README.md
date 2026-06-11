@@ -40,17 +40,48 @@ GitHub Pages needs the following records:
 | A     | @     | `185.199.111.153`    |
 | CNAME | `www` | `jmiaie.github.io`   |
 
-> **Note:** as of June 2026 the domain still delegates to Cloudflare
-> nameservers (`jerry.ns.cloudflare.com` / `sarah.ns.cloudflare.com`) left
-> over from a previous setup. Either switch the domain to Porkbun's default
-> nameservers (Porkbun → Domain → Nameservers → reset to default) and add
-> the records above in Porkbun's DNS editor, or keep Cloudflare and update
-> the records in that Cloudflare account instead (set them to "DNS only"
-> until GitHub issues the HTTPS certificate).
+> **Important — email lives in this DNS zone.** The domain delegates to
+> Cloudflare nameservers (`jerry.ns.cloudflare.com` /
+> `sarah.ns.cloudflare.com`), and that Cloudflare zone serves the Google
+> Workspace MX/SPF records that keep `jmilam@micap.pro` (and aliases)
+> working. **Do not reset nameservers to Porkbun defaults** without first
+> recreating the mail records below — mail would start failing within the
+> hour.
+>
+> **Recommended path:** keep the Cloudflare nameservers and edit only the
+> website records in the Cloudflare dashboard: replace the existing `@`
+> A/CNAME records with the four A records above and add/replace the `www`
+> CNAME. Set them to **DNS only** (grey cloud, not proxied) so GitHub can
+> issue the HTTPS certificate.
+
+### Mail records (do not remove; recreate first if ever moving DNS)
+
+| Type | Host             | Value                                                                                              |
+| ---- | ---------------- | -------------------------------------------------------------------------------------------------- |
+| MX   | @                | `1 aspmx.l.google.com`                                                                              |
+| MX   | @                | `5 alt1.aspmx.l.google.com`                                                                         |
+| MX   | @                | `5 alt2.aspmx.l.google.com`                                                                         |
+| MX   | @                | `10 alt3.aspmx.l.google.com`                                                                        |
+| MX   | @                | `10 alt4.aspmx.l.google.com`                                                                        |
+| TXT  | @                | `v=spf1 include:spf.em.secureserver.net include:secureserver.net include:_spf.google.com ~all`     |
+| TXT  | @                | `google-site-verification=1au0H4JOyOpj_P2Lxl7DKorG0B_PdxIlVzUt64APmUE`                              |
+| TXT  | `_dmarc`         | `v=DMARC1; p=none; rua=mailto:dmarc_rua@onsecureserver.net`                                         |
+
+Optional mail hygiene (no urgency, unrelated to the website):
+
+- SPF still includes GoDaddy's `secureserver.net` servers, which no longer
+  send for this domain. It can be trimmed to
+  `v=spf1 include:_spf.google.com ~all`.
+- DMARC aggregate reports go to a dead GoDaddy address; repoint `rua=` to a
+  monitored mailbox (or a DMARC reporting service) if reports are wanted.
+- DKIM with the standard Google selector (`google._domainkey`) is not
+  published. It can be enabled in Google Admin → Apps → Google Workspace →
+  Gmail → Authenticate email, then adding the TXT record it generates.
 
 ## Email
 
-`manager@micap.pro` must be routed somewhere now that GoDaddy no longer
-hosts the domain's mail. If DNS is on Porkbun nameservers, Porkbun's free
-Email Forwarding (Domain → Email) can forward it to a personal inbox; on
-Cloudflare nameservers, use Cloudflare Email Routing.
+Mail for `micap.pro` is hosted on **Google Workspace** (`jmilam@micap.pro`
+and aliases) and is routed by the MX records above — it is independent of
+the website records and of where the site is hosted. The site's published
+contact address is `manager@micap.pro`; confirm it exists as an alias or
+group in the Google Workspace Admin console.
