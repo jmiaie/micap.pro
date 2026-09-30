@@ -1,5 +1,7 @@
 # micap.pro
 
+> **Status (2026-09-30):** stalled marketing WIP on default branch `claude/rebuild-micap-website-0xb8u` (**no `main`**). See [`STATUS.md`](STATUS.md).
+
 Marketing site for **Micap LLC** — project management and management
 consulting across sustainable energy, construction, real estate, and
 technology.
