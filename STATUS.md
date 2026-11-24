@@ -1,45 +1,23 @@
 # Status — micap.pro
 
-**Updated:** 2026-09-30 (PT)  
+**Updated:** 2026-11-24  
 **Visibility:** public  
-**Maturity:** stalled marketing-site WIP  
-**Default branch:** `claude/rebuild-micap-website-0xb8u` (**no `main`** on this remote today)
+**Maturity:** static marketing site (Next.js 14, `output: 'export'`)  
+**Branches:** `main` exists as a snapshot of the previous default tip, so a pull request can target it. The repository default may still be `claude/rebuild-micap-website-0xb8u` until the owner changes it in GitHub settings.
 
-## Honest positioning
+## What this repo is
 
-Next.js 14 + Tailwind marketing site for **Micap LLC** (project management / consulting narrative). Tree is a small App Router landing (`app/page.tsx` + layout/styles) plus GitHub Pages deploy workflow docs.
+Marketing site for **Micap LLC**, a boutique multinational consultancy: software, business, construction, and real estate. Static export only. No application backend, no form processor, and no secrets.
 
-| Claim in older README tone | Reality |
-|----------------------------|---------|
-| Live custom-domain site always current | DNS/migration notes describe a **stalled** Porkbun ↔ leftover Cloudflare zone cutover; do not assume `micap.pro` content equals this tip without checking DNS/Pages |
-| Production SaaS / product | **Marketing landing only** — no app backend in this repo |
-| Default branch `main` | HEAD = `claude/rebuild-micap-website-0xb8u` |
+Published contact: `info@micap.pro` (must exist as a Google Workspace alias). Phone numbers are not published. The site does not name an individual.
 
-Sibling Micap web/name properties exist across many remotes (`MicapAI`, `ai.micap`, `jeff-milam-portfolio`, `micapai.com`, …). **Canonical consolidation is an owner decision** — this STATUS does not archive siblings.
+## What is not claimed
 
-## Offline quickstart
+- That the Porkbun nameserver cutover described in the README is finished
+- That `micap.pro` already serves this build (that depends on DNS and Pages settings, which this repo does not change)
+- Client names, testimonials, or a roster. Capability figures on the site describe scale of work, not named clients.
+- That this remote is the only Micap web property. Micap AI (`https://micap.ai`) is the sister firm and is linked from the software division.
 
-```bash
-npm install
-npm run dev     # localhost:3000
-npm run build   # static export intent per README / next config
-```
+## DNS
 
-Recorded on this box 2026-09-30 PT: `npm run build` **succeeded** (static pages generated). Next 14.2.15 install printed an upstream security-advisory deprecation warning — upgrade is owner follow-up; not patched in this docs wave.
-
-## Workflows
-
-`.github/workflows/deploy.yml` exists. This advance **does not** modify workflow files (token lacks `workflow` scope / hard rule).
-
-## What is **not** claimed
-
-- That DNS cutover is complete  
-- SEO/lead KPIs or active campaign metrics  
-- That this remote is the only Micap web property
-
-## Next (owner)
-
-1. Create a real `main` (or rename default) when ready  
-2. Finish DNS cutover checklist in README **or** mark domain docs historical  
-3. Consolidate Micap web remotes; bump Next past advisory when touching deps  
-4. CAREER outbound remains gated elsewhere — this repo is site hygiene only
+Do not edit mail records from this repo. **Google Workspace MX, SPF, `google-site-verification`, and `_dmarc` records must be preserved.** See the README.
