@@ -10,8 +10,8 @@ export function SiteFooter() {
             Micap
           </p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
-            Jeffrey Milam’s consulting firm. Software, business, construction,
-            and real estate — owner-side, and led directly.
+            A boutique multinational consultancy. Software, business,
+            construction, and real estate for enterprise clients.
           </p>
         </div>
         <div className="md:col-span-3">

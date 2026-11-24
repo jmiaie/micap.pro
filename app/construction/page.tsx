@@ -23,12 +23,12 @@ export default function ConstructionPage() {
       <section className="border-y border-line bg-bg">
         <div className="mx-auto max-w-page px-6 py-16 sm:px-10">
           <h2 className="font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-            Equity Residential, 2015–2019
+            Scale of the work
           </h2>
           <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">
-            These figures describe Jeffrey Milam’s role as Technical Program
-            Manager and Senior Construction Services Manager / CapEx Product
-            Owner. They are historical. They are not Micap client results.
+            Owner’s-representative experience on a multi-billion-dollar Class
+            A+ portfolio, and capital programs at this scale. These figures
+            describe practice capability. They are not a client roster.
           </p>
           <dl className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {figures.map((figure) => (

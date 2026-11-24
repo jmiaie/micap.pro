@@ -2,13 +2,13 @@ import Link from "next/link";
 import { InquiryBand } from "@/components/InquiryBand";
 import { SplitHero } from "@/components/SplitHero";
 import { pageMetadata } from "@/lib/metadata";
-import { founderFacts, media, practices, whyMicap } from "@/lib/site";
+import { firmCapabilities, media, practices, whyMicap } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title:
     "Micap LLC — Consulting for software, business, construction, and real estate",
   description:
-    "Micap LLC is Jeffrey Milam’s consulting firm. Four divisions: software, business, construction, and real estate. Owner-side counsel, led directly.",
+    "Micap LLC is a boutique multinational consultancy. Four practices: software, business, construction, and real estate, for enterprise clients.",
   path: "/",
 });
 
@@ -24,7 +24,7 @@ export default function HomePage() {
             One standard of judgment.
           </>
         }
-        lede="Micap is Jeffrey Milam’s consulting firm. Software, business, construction, and real estate — owner-side, and led by the person you hire."
+        lede="Micap is a boutique multinational consultancy. Software, business, construction, and real estate for enterprise clients, with our practice leads on the work."
         mediaKey="home"
       >
         <a
@@ -100,7 +100,7 @@ export default function HomePage() {
       <section className="border-t border-line bg-panel">
         <div className="mx-auto max-w-page px-6 py-16 sm:px-10 sm:py-24">
           <h2 className="max-w-xl font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
-            Why owners call Micap
+            Why clients call Micap
           </h2>
           <ol className="mt-12 border-t border-line">
             {whyMicap.map((item) => (
@@ -127,15 +127,15 @@ export default function HomePage() {
         <div className="grid gap-10 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="text-xs font-semibold uppercase tracking-eyebrow text-brass">
-              Founder
+              The practice
             </p>
             <h2 className="mt-4 font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
-              Jeffrey Milam
+              What the firm brings
             </h2>
             <p className="mt-6 max-w-prose text-base leading-relaxed text-muted">
-              Micap is organized around the work he has already done:
-              construction management, capital programs, hands-on real estate,
-              and software. The firm is the place those practices sit together.
+              Four practices in one firm: construction, capital programs,
+              acquisitions, and software. The figures below describe the scale
+              of work our consultants draw on. They are not a client roster.
             </p>
             <Link
               href="/about/"
@@ -145,7 +145,7 @@ export default function HomePage() {
             </Link>
           </div>
           <dl className="lg:col-span-7">
-            {founderFacts.map((fact) => (
+            {firmCapabilities.map((fact) => (
               <div key={fact.term} className="border-t border-line py-5">
                 <dt className="text-sm font-semibold text-ink">{fact.term}</dt>
                 <dd className="mt-2 text-sm leading-relaxed text-muted">

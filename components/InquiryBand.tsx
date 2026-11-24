@@ -8,7 +8,7 @@ type Props = {
 
 export function InquiryBand({
   title = "Tell us what you are deciding.",
-  body = "A short note is enough. It goes directly to Jeffrey Milam.",
+  body = "A short note is enough. It reaches the practice.",
 }: Props) {
   return (
     <section className="bg-ink text-cream">

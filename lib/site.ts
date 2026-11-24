@@ -1,11 +1,11 @@
-export const CONTACT_EMAIL = "jmilam@micap.pro";
+export const CONTACT_EMAIL = "info@micap.pro";
 
 export const SITE = {
   name: "Micap LLC",
   url: "https://micap.pro",
   locale: "en_US",
   description:
-    "Micap LLC is Jeffrey Milam’s consulting firm. Four divisions — software, business, construction, and real estate — owner-side, and led directly.",
+    "Micap LLC is a boutique multinational consultancy. Four practices — software, business, construction, and real estate — for enterprise clients.",
 } as const;
 
 export type MediaKey =
@@ -69,9 +69,9 @@ export const practices: Practice[] = [
     nav: "Software",
     index: "01",
     title: "Software Development & Tech Consulting",
-    card: "Scoping, architecture, and delivery advice for owners deciding what software is worth building.",
+    card: "Scoping, architecture, and delivery advice for enterprises deciding what software is worth building.",
     eyebrow: "01  ·  Software",
-    lede: "Technical counsel for owners who need software judged the way a capital project is judged: scope, risk, and what it will cost to run.",
+    lede: "Technical counsel for clients who need software judged the way a capital project is judged: scope, risk, and what it will cost to run.",
     description:
       "Software development and technology consulting from Micap LLC. Scoping, architecture, and delivery advice, with lab and AI engineering at sister firm Micap AI.",
     media: "software",
@@ -109,11 +109,11 @@ export const practices: Practice[] = [
       },
       {
         title: "Leave a record",
-        body: "The owner keeps a written view they can hand to a team, a vendor, or to Micap AI when the work belongs in the lab.",
+        body: "The client keeps a written view they can hand to their team, a vendor, or to Micap AI when the work belongs in the lab.",
       },
     ],
     background: [
-      "Jeffrey Milam builds software and does AI engineering in Python and TypeScript, on AWS, with Terraform, Docker, Kubernetes, and PostgreSQL.",
+      "Our consultants advise in Python and TypeScript, on AWS, with Terraform, Docker, Kubernetes, and PostgreSQL.",
       "Micap LLC’s software division is the consulting practice. Micap AI, at micap.ai, is the sister company: the Software Lab and AI Engineering firm. Product builds and lab work live there.",
     ],
   },
@@ -122,11 +122,11 @@ export const practices: Practice[] = [
     nav: "Business",
     index: "02",
     title: "Business Consulting",
-    card: "Operating counsel for owners, when a decision crosses a project, a property, and a P&L.",
+    card: "Operating counsel for enterprise clients, when a decision crosses a project, a property, and a P&L.",
     eyebrow: "02  ·  Business",
-    lede: "Operating advice for owners. The work is grounded in program management and an executive business education, and it is led by the person you hire.",
+    lede: "Operating advice for clients whose decisions cross a program, a property, and a P&L. Practice leads stay with the work.",
     description:
-      "Business consulting from Micap LLC. Owner-side advice on programs, operations, and decisions that cross a project, a property, and a P&L.",
+      "Business consulting from Micap LLC. Advice on programs, operations, and decisions that cross a project, a property, and a P&L.",
     media: "business",
     covers: [
       {
@@ -139,7 +139,7 @@ export const practices: Practice[] = [
       },
       {
         title: "Decisions that cross a desk",
-        body: "Many owner decisions are a project, a property, and a P&L at once. The engagement treats them as one decision.",
+        body: "Many enterprise decisions are a project, a property, and a P&L at once. The engagement treats them as one decision.",
       },
       {
         title: "A technical issue, in business terms",
@@ -150,7 +150,7 @@ export const practices: Practice[] = [
     approach: [
       {
         title: "Start from the decision",
-        body: "The question the owner has to answer, in their words, before any framework is applied.",
+        body: "The question the client has to answer, in their words, before any framework is applied.",
       },
       {
         title: "Separate the problems",
@@ -162,12 +162,12 @@ export const practices: Practice[] = [
       },
       {
         title: "Leave a short written view",
-        body: "A document the owner can use. The length follows the decision, not a template.",
+        body: "A document the client can use. The length follows the decision, not a template.",
       },
     ],
     background: [
-      "Jeffrey Milam completed an Executive MBA at the Quantic School of Business and Technology in 2025, with a 4.0 GPA.",
-      "From 2015 to 2019 he was a Technical Program Manager and Senior Construction Services Manager / CapEx Product Owner at Equity Residential, running capital programs of about $27 million a year. That work is the practical base of the business practice: programs, owners, and the cost of getting the sequence wrong.",
+      "The business practice advises on how a portfolio of initiatives is sequenced, staffed, and paid for.",
+      "That advice sits next to capital-program experience on the order of $27 million a year: the cost of getting the sequence wrong, and the discipline of keeping it right.",
     ],
   },
   {
@@ -219,8 +219,8 @@ export const practices: Practice[] = [
       },
     ],
     background: [
-      "Jeffrey Milam holds a B.S. in Construction Management and Technology from Arizona State University, 2015.",
-      "From 2015 to 2019, at Equity Residential, he was a Technical Program Manager and Senior Construction Services Manager / CapEx Product Owner, and owner’s representative on a $3 billion Class A+ portfolio. Capital programs ran about $27 million a year across more than 3,600 units and 30 commercial assets. The work was construction management, value engineering, and cost-overrun prevention.",
+      "The construction practice brings owner’s-representative experience on a multi-billion-dollar Class A+ portfolio.",
+      "Capital programs in that work ran about $27 million a year across more than 3,600 units and 30 commercial assets: construction management, value engineering, and cost-overrun prevention. These figures describe practice capability. They are not a client roster.",
     ],
   },
   {
@@ -228,11 +228,11 @@ export const practices: Practice[] = [
     nav: "Real Estate",
     index: "04",
     title: "Real Estate Consulting",
-    card: "Capital, acquisitions, and value-add, read with a builder’s eye and a buyer’s basis.",
+    card: "Capital, acquisitions, and value-add for owners of portfolios and single assets.",
     eyebrow: "04  ·  Real Estate",
-    lede: "Advice on capital, acquisitions, and value-add. For owners deciding what to buy, what to improve, and what a number is actually worth.",
+    lede: "Advice on capital, acquisitions, and value-add. For clients deciding what to buy, what to improve, and what a number is actually worth.",
     description:
-      "Real estate consulting from Micap LLC. Capital, acquisitions, and value-add advice, informed by hands-on work in Southern California and Maricopa County, Arizona.",
+      "Real estate consulting from Micap LLC. Capital, acquisitions, and value-add for enterprise and private owners.",
     media: "real-estate",
     covers: [
       {
@@ -248,8 +248,8 @@ export const practices: Practice[] = [
         body: "Improvements read the way a builder reads them. Scope, sequence, and the cost of doing the work while the asset is occupied or leased.",
       },
       {
-        title: "Markets with hands-on work",
-        body: "Wholesale and flip experience in San Diego and Southern California, and in Maricopa County, Arizona. The advice is informed by that work. It is still advice, specific to the asset you bring.",
+        title: "Markets",
+        body: "Portfolio and asset work, including Southern California and Maricopa County, Arizona. The advice stays specific to the property in front of the client.",
       },
     ],
     approachTitle: "How a real estate engagement runs",
@@ -268,12 +268,12 @@ export const practices: Practice[] = [
       },
       {
         title: "Write it down before money moves",
-        body: "A view the owner can use while the decision is still open.",
+        body: "A view the client can use while the decision is still open.",
       },
     ],
     background: [
-      "Jeffrey Milam has bought and sold property hands-on: wholesale and flip work in San Diego, Southern California, and Maricopa County, Arizona.",
-      "The same years at Equity Residential were an owner’s-side view of a large multifamily and commercial portfolio: a $3 billion Class A+ portfolio, capital programs of about $27 million a year, more than 3,600 units, and 30 commercial assets.",
+      "The real estate practice advises on capital, acquisitions, and value-add for multifamily and commercial property.",
+      "That work draws on owner’s-side experience with a multi-billion-dollar Class A+ portfolio: capital programs of about $27 million a year, more than 3,600 units, and 30 commercial assets.",
       "Micap advises on the decision. This page is not an offer of securities and not a brokerage solicitation.",
     ],
   },
@@ -286,18 +286,18 @@ export const practiceBySlug = Object.fromEntries(
 export const whyMicap = [
   {
     index: "01",
-    title: "Owner-side",
+    title: "Client-side",
     body: "Scope, cost, and risk are read from your side of the table. The engagement is there to protect the outcome you are paying for.",
   },
   {
     index: "02",
-    title: "Senior-led",
-    body: "Jeffrey Milam does the work he is hired for. The judgment you retain is the judgment in the work.",
+    title: "Practice leads",
+    body: "Our consultants stay on the engagement. The people you meet are the people who do the work.",
   },
   {
     index: "03",
-    title: "Cross-trained",
-    body: "Construction management, capital programs, acquisitions, and software sit in one practice. Useful when a decision touches more than one of them.",
+    title: "One firm",
+    body: "Construction, capital programs, acquisitions, and software sit in one practice. Useful when a decision touches more than one of them.",
   },
   {
     index: "04",
@@ -306,31 +306,31 @@ export const whyMicap = [
   },
 ];
 
-export const founderFacts = [
+export const firmCapabilities = [
   {
-    term: "Education",
+    term: "Owner’s representation",
     detail:
-      "B.S. Construction Management and Technology, Arizona State University, 2015. Executive MBA, Quantic School of Business and Technology, 2025, 4.0 GPA.",
+      "Experience on a multi-billion-dollar Class A+ portfolio, from the documents through the field.",
   },
   {
-    term: "Equity Residential, 2015–2019",
+    term: "Capital programs",
     detail:
-      "Technical Program Manager and Senior Construction Services Manager / CapEx Product Owner. Owner’s representative on a $3 billion Class A+ portfolio. Capital programs of about $27 million a year across more than 3,600 units and 30 commercial assets.",
+      "Programs of about $27 million a year, across more than 3,600 units and 30 commercial assets.",
   },
   {
-    term: "The work there",
+    term: "Construction",
     detail:
       "Construction management, value engineering, and cost-overrun prevention.",
   },
   {
-    term: "Real estate, hands-on",
+    term: "Real estate",
     detail:
-      "Wholesale and flip experience in San Diego, Southern California, and Maricopa County, Arizona.",
+      "Capital, acquisitions, and value-add for multifamily and commercial property.",
   },
   {
     term: "Software",
     detail:
-      "Python, TypeScript, AWS, Terraform, Docker, Kubernetes, and PostgreSQL.",
+      "Python, TypeScript, AWS, Terraform, Docker, Kubernetes, and PostgreSQL. Lab and AI engineering sit with sister firm Micap AI.",
   },
 ];
 
@@ -352,22 +352,7 @@ export const organizationJsonLd = {
   email: CONTACT_EMAIL,
   image: "https://micap.pro/og.png",
   description: SITE.description,
-  founder: {
-    "@type": "Person",
-    name: "Jeffrey Milam",
-    jobTitle: "Founder",
-    alumniOf: [
-      {
-        "@type": "CollegeOrUniversity",
-        name: "Arizona State University",
-      },
-      {
-        "@type": "CollegeOrUniversity",
-        name: "Quantic School of Business and Technology",
-      },
-    ],
-  },
-  areaServed: "US",
+  areaServed: "Worldwide",
   knowsAbout: [
     "Software consulting",
     "Business consulting",

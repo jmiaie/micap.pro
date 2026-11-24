@@ -7,15 +7,15 @@
 
 ## What this repo is
 
-Marketing site for **Micap LLC** (Jeffrey Milam): software, business, construction, and real estate consulting. Static export only. No application backend, no form processor, and no secrets.
+Marketing site for **Micap LLC**, a boutique multinational consultancy: software, business, construction, and real estate. Static export only. No application backend, no form processor, and no secrets.
 
-Published contact: `jmilam@micap.pro`. Phone numbers are not published.
+Published contact: `info@micap.pro` (must exist as a Google Workspace alias). Phone numbers are not published. The site does not name an individual.
 
 ## What is not claimed
 
 - That the Porkbun nameserver cutover described in the README is finished
 - That `micap.pro` already serves this build (that depends on DNS and Pages settings, which this repo does not change)
-- Client names, testimonials, or performance statistics beyond the founder background stated on the site
+- Client names, testimonials, or a roster. Capability figures on the site describe scale of work, not named clients.
 - That this remote is the only Micap web property. Micap AI (`https://micap.ai`) is the sister firm and is linked from the software division.
 
 ## DNS

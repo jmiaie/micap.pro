@@ -1,13 +1,13 @@
 # micap.pro
 
-Marketing site for **Micap LLC**, Jeffrey Milam’s consulting firm. Four divisions:
+Marketing site for **Micap LLC**, a boutique multinational consultancy. Four divisions:
 
 1. Software Development & Tech Consulting
 2. Business Consulting
 3. Construction Consulting
 4. Real Estate Consulting (capital, acquisitions, value-add)
 
-The sister firm [Micap AI](https://micap.ai) is the Software Lab and AI Engineering practice. It is linked from the software division. The published contact address is `jmilam@micap.pro`.
+The sister firm [Micap AI](https://micap.ai) is the Software Lab and AI Engineering practice. It is linked from the software division. The published contact address is `info@micap.pro` (the `CONTACT_EMAIL` constant in `lib/site.ts`). That address must exist as a Google Workspace alias or user before mail to it will arrive. Adding the alias does not change DNS.
 
 Built with Next.js 14 and Tailwind CSS. The production build is a **fully static export** (`output: 'export'`) and can be hosted on Cloudflare Pages or GitHub Pages.
 
@@ -38,12 +38,12 @@ One-time GitHub Pages setup, if it is not already done:
 
 ## DNS (domain registered at Porkbun)
 
-**Preserve mail.** The Google Workspace **MX** records, the **SPF** TXT record, the **`google-site-verification`** TXT record, and the **`_dmarc`** TXT record must be preserved. Do not replace them with a host’s default email forwarding. The website can move between GitHub Pages and Cloudflare Pages; those four kinds of records are what keep `jmilam@micap.pro` working. This repository does not manage DNS.
+**Preserve mail.** The Google Workspace **MX** records, the **SPF** TXT record, the **`google-site-verification`** TXT record, and the **`_dmarc`** TXT record must be preserved. Do not replace them with a host’s default email forwarding. The website can move between GitHub Pages and Cloudflare Pages; those four kinds of records are what keep Google Workspace mail working, including `info@micap.pro` once that alias exists. This repository does not manage DNS.
 
 As of June 2026 the live zone is a leftover **Cloudflare** zone
 (`jerry.ns.cloudflare.com` / `sarah.ns.cloudflare.com`) from the GoDaddy
 era, with no known account access. It serves the Google Workspace mail
-records (which is why `jmilam@micap.pro` kept working after GoDaddy was cut
+records (which is why Workspace mail kept working after GoDaddy was cut
 off) plus website records pointing at the dead GoDaddy origin.
 
 The migration plan: **stage the complete record set in Porkbun's DNS
@@ -88,7 +88,7 @@ Migration notes:
   `secureserver.net` includes covered GoDaddy senders that no longer exist.
 - The old DMARC record sent aggregate reports to a dead GoDaddy address;
   `p=none` keeps DMARC present without reports. Append
-  `; rua=mailto:jmilam@micap.pro` to receive the (XML, often noisy) reports.
+  `; rua=mailto:info@micap.pro` to receive the (XML, often noisy) reports.
 - `email.micap.pro` and `autodiscover.micap.pro` exist in the old zone as
   GoDaddy/Outlook-era leftovers and are intentionally not carried over.
 - No DKIM selector is published in the old zone, so there is none to copy.
@@ -106,12 +106,12 @@ MX at the same Google servers.
 
 ## Email
 
-Mail for `micap.pro` is hosted on **Google Workspace** (`jmilam@micap.pro`
-and any aliases), routed by the MX records above — independent of the
-website and its hosting.
+Mail for `micap.pro` is hosted on **Google Workspace**, routed by the MX
+records above — independent of the website and its hosting.
 
-The site’s published contact address is `jmilam@micap.pro`. If a
-`manager@micap.pro` alias exists in the Google Admin console, that is a
-mailbox setting, not a DNS record. Changing aliases does not require DNS
-edits, and it must not be used as a reason to touch MX, SPF,
-`google-site-verification`, or `_dmarc`.
+The site’s published contact address is `info@micap.pro`. Create it in
+Google Admin as an **email alias** (or a user) before the form and mailto
+links will deliver. That is a mailbox setting, not a DNS record. Do not
+touch MX, SPF, `google-site-verification`, or `_dmarc` when you add it. If a
+`manager@micap.pro` alias already exists, leave it; it is also a mailbox
+setting, not a website record.

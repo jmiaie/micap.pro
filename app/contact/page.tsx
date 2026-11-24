@@ -5,8 +5,7 @@ import { CONTACT_EMAIL } from "@/lib/site";
 
 export const metadata = pageMetadata({
   title: "Contact",
-  description:
-    "Contact Micap LLC. Write to jmilam@micap.pro about software, business, construction, or real estate consulting.",
+  description: `Contact Micap LLC at ${CONTACT_EMAIL} about software, business, construction, or real estate consulting.`,
   path: "/contact/",
 });
 
@@ -16,7 +15,7 @@ export default function ContactPage() {
       <SplitHero
         eyebrow="Contact"
         title="Start with the decision."
-        lede="Write to Jeffrey Milam. A few sentences on the asset, the project, or the system — and the question you need answered — are enough to begin."
+        lede="Write to the firm. A few sentences on the asset, the project, or the system — and the question you need answered — are enough to begin."
         mediaKey="contact"
       >
         <a
@@ -50,7 +49,7 @@ export default function ContactPage() {
             <li>Which division the question belongs to, if you know.</li>
             <li>The asset, project, or system, in a sentence.</li>
             <li>The decision you have to make, and when.</li>
-            <li>Where you are. Markets of hands-on work include Southern California and Maricopa County, Arizona. The firm also advises elsewhere.</li>
+            <li>Where the asset or the team sits. We advise enterprise clients across markets.</li>
           </ul>
         </div>
         <div className="border border-line bg-panel p-6 sm:p-8 lg:col-span-8">

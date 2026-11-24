@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   },
   description: SITE.description,
   applicationName: "Micap LLC",
-  authors: [{ name: "Jeffrey Milam", url: SITE.url }],
   creator: "Micap LLC",
   openGraph: {
     type: "website",
