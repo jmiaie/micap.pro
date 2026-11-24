@@ -122,16 +122,16 @@ export const practices: Practice[] = [
     nav: "Business",
     index: "02",
     title: "Business Consulting",
-    card: "Operating counsel and fractional executive engagements — CFO, COO, CTO, CXO, CAIO, and go-to-market leadership — for enterprise and growth-stage clients.",
+    card: "Fractional Executive Services: our executives step into the C-suite seat — CFO, COO, CTO, CAIO, CMO/GTM, and CXO — and run it.",
     eyebrow: "02  ·  Business",
-    lede: "Operating advice and fractional leadership for enterprise and growth-stage clients, from the C-suite seat the company needs to the operating cadence and the capital plan.",
+    lede: "Operating advice and Fractional Executive Services for enterprise and growth-stage clients. Our executives step into the seat and run it, from the operating cadence to the capital plan.",
     description:
-      "Business consulting from Micap LLC, including fractional executive and advisory engagements for enterprise and growth-stage clients: fractional CFO, COO, CTO, CXO, and CAIO support, go-to-market and CMO-style leadership, interim leadership, board and investor advisory, operating cadence, and capital planning.",
+      "Business consulting from Micap LLC, including Fractional Executive Services for enterprise and growth-stage clients. Our executives step into and run the seat: fractional CFO, COO, CTO, CAIO, CMO/GTM, and CXO leadership, plus interim leadership, board and investor work, operating cadence, and capital planning.",
     media: "business",
     covers: [
       {
-        title: "Fractional consulting",
-        body: "Fractional CFO, COO, CTO, CXO, and CAIO coverage, go-to-market and CMO-style leadership, interim leadership, board and investor advisory, operating cadence, and capital planning. Scoped to the decision, staffed by our consultants.",
+        title: "Fractional Executive Services",
+        body: "Our executives step into and run the seat: CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership, board and investor work, operating cadence, and capital planning. Scoped to the decision.",
       },
       {
         title: "A portfolio of initiatives",
@@ -170,7 +170,7 @@ export const practices: Practice[] = [
       },
     ],
     background: [
-      "The business practice advises on how a portfolio of initiatives is sequenced, staffed, and paid for, including fractional executive coverage when the client needs leadership without a full-time hire.",
+      "The business practice works on how a portfolio of initiatives is sequenced, staffed, and paid for, including Fractional Executive Services when the client needs an executive in the seat without a full-time hire.",
       "That advice sits next to capital-program experience on the order of $27 million a year: the cost of getting the sequence wrong, and the discipline of keeping it right.",
     ],
   },
@@ -290,35 +290,35 @@ export const practiceBySlug = Object.fromEntries(
 export const fractionalEngagements = [
   {
     title: "Fractional CFO, COO, and CTO",
-    body: "Part-time executive coverage for finance, operations, or technology, working inside the client’s team and reporting rhythm.",
+    body: "Our executives step into the finance, operations, or technology seat and run it part time, inside the client’s team and reporting rhythm.",
   },
   {
     title: "Fractional CXO",
-    body: "General C-suite coverage, including chief experience leadership, shaped to the seat the company actually needs rather than a fixed job description.",
+    body: "Our executives step into the C-suite seat the company needs, including chief experience, and run that scope.",
   },
   {
     title: "Fractional CAIO",
-    body: "Chief AI Officer coverage: AI strategy, governance, adoption roadmaps, and vendor and model selection, tied to the operating plan.",
+    body: "Our executives take the Chief AI Officer seat and run it: AI strategy, governance, adoption roadmaps, and vendor and model selection, tied to the operating plan.",
   },
   {
     title: "Fractional GTM and CMO-style leadership",
-    body: "Go-to-market strategy, positioning, demand generation, and revenue and marketing operations, run as a defined leadership engagement.",
+    body: "Our executives step into go-to-market leadership and run it: strategy, positioning, demand generation, and revenue and marketing operations.",
   },
   {
     title: "Interim leadership",
-    body: "A defined stretch of leadership while a search is underway or a transition is in motion, with a written scope and an end date.",
+    body: "Our executives run the seat for a defined stretch while a search is underway or a transition is in motion, with a written scope and an end date.",
   },
   {
     title: "Board and investor advisory",
-    body: "Preparation and counsel for boards and investors: the numbers, the narrative, and the decisions on the table.",
+    body: "Our executives step into the board and investor rhythm and carry the work in the room: the numbers, the narrative, and the decisions on the table.",
   },
   {
     title: "Operating cadence",
-    body: "The weekly and monthly rhythm that keeps a portfolio of initiatives moving, and shows where it has stalled.",
+    body: "Our executives install and run the weekly and monthly rhythm that keeps a portfolio of initiatives moving, and shows where it has stalled.",
   },
   {
     title: "Capital planning",
-    body: "How capital is sequenced against the operating plan, including what is spent now and what can wait.",
+    body: "Our executives run the capital plan against the operating plan, including what is spent now and what can wait.",
   },
 ];
 
@@ -367,9 +367,9 @@ export const firmCapabilities = [
       "Capital, acquisitions, and value-add for multifamily and commercial property.",
   },
   {
-    term: "Fractional leadership",
+    term: "Fractional Executive Services",
     detail:
-      "Fractional CFO, COO, CTO, CXO, and CAIO coverage, go-to-market leadership, interim leadership, and board and investor advisory for enterprise and growth-stage clients.",
+      "Our executives step into and run the seat: CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership and board work, for enterprise and growth-stage clients.",
   },
   {
     term: "Software",
@@ -400,7 +400,7 @@ export const organizationJsonLd = {
   knowsAbout: [
     "Software consulting",
     "Business consulting",
-    "Fractional consulting",
+    "Fractional Executive Services",
     "Fractional executive leadership",
     "Fractional CXO",
     "Fractional CAIO",
