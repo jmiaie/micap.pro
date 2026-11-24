@@ -122,7 +122,7 @@ export const practices: Practice[] = [
     nav: "Business",
     index: "02",
     title: "Business Consulting",
-    card: "Fractional Executive Services: our executives step into the C-suite seat — CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO — and run it.",
+    card: "Fractional Executive Services in three clusters: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM). Our executives step into the seat and run it.",
     eyebrow: "02  ·  Business",
     lede: "Operating advice and Fractional Executive Services for enterprise and growth-stage clients. Our executives step into the seat and run it, from the operating cadence to the capital plan.",
     description:
@@ -131,7 +131,7 @@ export const practices: Practice[] = [
     covers: [
       {
         title: "Fractional Executive Services",
-        body: "Our executives step into and run the seat: CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership, board and investor work, operating cadence, and capital planning. Scoped to the decision.",
+        body: "Three clusters of C-suite seats our executives step into and run: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM). Scoped to the decision.",
       },
       {
         title: "A portfolio of initiatives",
@@ -287,42 +287,58 @@ export const practiceBySlug = Object.fromEntries(
   practices.map((practice) => [practice.slug, practice]),
 ) as Record<Practice["slug"], Practice>;
 
-export const fractionalEngagements = [
+export const fractionalGroups = [
   {
-    title: "Fractional CEO",
-    body: "Our executives step into the chief executive seat and run it: strategy, leadership through transitions, turnarounds, scaling, and board and investor relations.",
+    id: "leadership-operations",
+    title: "Leadership & Operations",
+    framing:
+      "When the company needs a chief executive or an operator in the seat through a transition, a turnaround, or a scale-up.",
+    roles: [
+      {
+        title: "Fractional CEO",
+        body: "Our executives step into the chief executive seat and run it: strategy, leadership through transitions, turnarounds, scaling, and board and investor relations.",
+      },
+      {
+        title: "Fractional COO",
+        body: "Our executives step into the operations seat and run it part time, inside the client’s team and reporting rhythm.",
+      },
+    ],
   },
   {
-    title: "Fractional CFO, COO, and CTO",
-    body: "Our executives step into the finance, operations, or technology seat and run it part time, inside the client’s team and reporting rhythm.",
+    id: "technology-ai",
+    title: "Technology & AI",
+    framing:
+      "When technology, AI adoption, or the experience of the product has to be run, not only reviewed.",
+    roles: [
+      {
+        title: "Fractional CTO",
+        body: "Our executives step into the technology seat and run it part time, inside the client’s team and reporting rhythm.",
+      },
+      {
+        title: "Fractional CAIO",
+        body: "Our executives take the Chief AI Officer seat and run it: AI strategy, governance, adoption roadmaps, and vendor and model selection, tied to the operating plan.",
+      },
+      {
+        title: "Fractional CXO",
+        body: "Our executives step into the C-suite seat the company needs, including chief experience, and run that scope.",
+      },
+    ],
   },
   {
-    title: "Fractional CXO",
-    body: "Our executives step into the C-suite seat the company needs, including chief experience, and run that scope.",
-  },
-  {
-    title: "Fractional CAIO",
-    body: "Our executives take the Chief AI Officer seat and run it: AI strategy, governance, adoption roadmaps, and vendor and model selection, tied to the operating plan.",
-  },
-  {
-    title: "Fractional GTM and CMO-style leadership",
-    body: "Our executives step into go-to-market leadership and run it: strategy, positioning, demand generation, and revenue and marketing operations.",
-  },
-  {
-    title: "Interim leadership",
-    body: "Our executives run the seat for a defined stretch while a search is underway or a transition is in motion, with a written scope and an end date.",
-  },
-  {
-    title: "Board and investor advisory",
-    body: "Our executives step into the board and investor rhythm and carry the work in the room: the numbers, the narrative, and the decisions on the table.",
-  },
-  {
-    title: "Operating cadence",
-    body: "Our executives install and run the weekly and monthly rhythm that keeps a portfolio of initiatives moving, and shows where it has stalled.",
-  },
-  {
-    title: "Capital planning",
-    body: "Our executives run the capital plan against the operating plan, including what is spent now and what can wait.",
+    id: "finance-growth",
+    title: "Finance & Growth",
+    framing:
+      "When finance and go-to-market have to be run against the same plan: capital, positioning, and demand.",
+    roles: [
+      {
+        title: "Fractional CFO",
+        body: "Our executives step into the finance seat and run it part time, inside the client’s team and reporting rhythm.",
+      },
+      {
+        title: "Fractional GTM and CMO-style leadership",
+        body: "Our executives step into go-to-market leadership and run it: strategy, positioning, demand generation, and revenue and marketing operations.",
+      },
+    ],
   },
 ];
 
@@ -373,7 +389,7 @@ export const firmCapabilities = [
   {
     term: "Fractional Executive Services",
     detail:
-      "Our executives step into and run the seat: CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership and board work, for enterprise and growth-stage clients.",
+      "Three clusters our executives step into and run: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM).",
   },
   {
     term: "Software",

@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { InquiryBand } from "@/components/InquiryBand";
 import { JsonLd } from "@/components/JsonLd";
 import { SplitHero } from "@/components/SplitHero";
-import { fractionalEngagements, practices, type Practice } from "@/lib/site";
+import { fractionalGroups, practices, type Practice } from "@/lib/site";
 
 export function PracticeView({
   practice,
@@ -14,10 +14,67 @@ export function PracticeView({
 }) {
   const others = practices.filter((item) => item.slug !== practice.slug);
   const url = `https://micap.pro/${practice.slug}/`;
-  const offered = [
-    ...practice.covers,
-    ...(practice.slug === "business" ? fractionalEngagements : []),
-  ];
+  const offered =
+    practice.slug === "business"
+      ? [
+          {
+            "@type": "ListItem",
+            position: 1,
+            item: {
+              "@type": "Service",
+              name: "Fractional Executive Services",
+              description: practice.covers.find(
+                (item) => item.title === "Fractional Executive Services",
+              )?.body,
+              hasOfferCatalog: {
+                "@type": "OfferCatalog",
+                name: "Fractional Executive Services",
+                itemListElement: fractionalGroups.map((group, groupIndex) => ({
+                  "@type": "ListItem",
+                  position: groupIndex + 1,
+                  item: {
+                    "@type": "Service",
+                    name: group.title,
+                    description: group.framing,
+                    hasOfferCatalog: {
+                      "@type": "OfferCatalog",
+                      name: group.title,
+                      itemListElement: group.roles.map((role, roleIndex) => ({
+                        "@type": "ListItem",
+                        position: roleIndex + 1,
+                        item: {
+                          "@type": "Service",
+                          name: role.title,
+                          description: role.body,
+                        },
+                      })),
+                    },
+                  },
+                })),
+              },
+            },
+          },
+          ...practice.covers
+            .filter((item) => item.title !== "Fractional Executive Services")
+            .map((item, index) => ({
+              "@type": "ListItem",
+              position: index + 2,
+              item: {
+                "@type": "Service",
+                name: item.title,
+                description: item.body,
+              },
+            })),
+        ]
+      : practice.covers.map((item, index) => ({
+          "@type": "ListItem",
+          position: index + 1,
+          item: {
+            "@type": "Service",
+            name: item.title,
+            description: item.body,
+          },
+        }));
 
   return (
     <>
@@ -58,15 +115,7 @@ export function PracticeView({
           hasOfferCatalog: {
             "@type": "OfferCatalog",
             name: practice.title,
-            itemListElement: offered.map((item, index) => ({
-              "@type": "ListItem",
-              position: index + 1,
-              item: {
-                "@type": "Service",
-                name: item.title,
-                description: item.body,
-              },
-            })),
+            itemListElement: offered,
           },
         }}
       />

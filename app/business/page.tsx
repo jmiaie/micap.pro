@@ -1,6 +1,6 @@
 import { PracticeView } from "@/components/PracticeView";
 import { pageMetadata } from "@/lib/metadata";
-import { fractionalEngagements, practiceBySlug } from "@/lib/site";
+import { fractionalGroups, practiceBySlug } from "@/lib/site";
 
 const practice = practiceBySlug.business;
 
@@ -33,18 +33,33 @@ export default function BusinessPage() {
             technology, AI, go-to-market, or experience — for enterprise and growth-stage
             clients. The engagement has a cadence, a written brief, and an end.
           </p>
-          <ul className="mt-12 grid gap-8 md:grid-cols-2">
-            {fractionalEngagements.map((item) => (
-              <li key={item.title} className="border-t border-line pt-6">
-                <h3 className="font-display text-2xl font-medium text-ink">
-                  {item.title}
+          <div className="mt-14 space-y-14">
+            {fractionalGroups.map((group) => (
+              <section key={group.id} aria-labelledby={group.id}>
+                <h3
+                  id={group.id}
+                  className="font-display text-2xl font-medium tracking-tight text-ink sm:text-3xl"
+                >
+                  {group.title}
                 </h3>
-                <p className="mt-3 text-base leading-relaxed text-muted">
-                  {item.body}
+                <p className="mt-3 max-w-prose text-base leading-relaxed text-muted">
+                  {group.framing}
                 </p>
-              </li>
+                <ul className="mt-8 grid gap-8 md:grid-cols-2">
+                  {group.roles.map((role) => (
+                    <li key={role.title} className="border-t border-line pt-6">
+                      <h4 className="font-display text-xl font-medium text-ink">
+                        {role.title}
+                      </h4>
+                      <p className="mt-3 text-base leading-relaxed text-muted">
+                        {role.body}
+                      </p>
+                    </li>
+                  ))}
+                </ul>
+              </section>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
     </PracticeView>
