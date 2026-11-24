@@ -10,11 +10,13 @@ const links = [
     href: `/${practice.slug}/`,
     label: practice.nav,
   })),
+  { href: "/insights/", label: "Insights" },
   { href: "/about/", label: "About" },
 ];
 
 function isCurrent(pathname: string, href: string) {
   const path = pathname.endsWith("/") ? pathname : `${pathname}/`;
+  if (href === "/insights/") return path.startsWith("/insights/");
   return path === href;
 }
 
@@ -53,7 +55,10 @@ export function SiteHeader() {
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
+        <nav
+          className="hidden items-center gap-x-4 xl:gap-x-6 lg:flex"
+          aria-label="Primary"
+        >
           {links.map((link) => {
             const current = isCurrent(pathname, link.href);
             return (
@@ -61,7 +66,7 @@ export function SiteHeader() {
                 key={link.href}
                 href={link.href}
                 aria-current={current ? "page" : undefined}
-                className={`text-sm font-medium ${
+                className={`whitespace-nowrap text-sm font-medium ${
                   current ? "text-ink" : "text-muted hover:text-ink"
                 }`}
               >

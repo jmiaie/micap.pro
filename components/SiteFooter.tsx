@@ -46,6 +46,14 @@ export function SiteFooter() {
               </a>
             </li>
             <li>
+              <Link
+                href="/insights/"
+                className="font-medium text-ink hover:text-brass"
+              >
+                Insights
+              </Link>
+            </li>
+            <li>
               <Link href="/about/" className="font-medium text-ink hover:text-brass">
                 About
               </Link>
