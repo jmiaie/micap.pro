@@ -5,7 +5,7 @@ export const SITE = {
   url: "https://micap.pro",
   locale: "en_US",
   description:
-    "Micap LLC is a boutique multinational consultancy. Four practices — software, business, construction, and real estate — for enterprise clients.",
+    "Micap LLC is a multinational business and technology consultancy. Five practices — fractional executive services, software, business, construction, and real estate — for enterprise clients.",
 } as const;
 
 export type MediaKey =
@@ -48,7 +48,7 @@ function asset(name: string): MediaAsset {
 }
 
 export type Practice = {
-  slug: "software" | "business" | "construction" | "real-estate";
+  slug: "fractional" | "software" | "business" | "construction" | "real-estate";
   nav: string;
   index: string;
   title: string;
@@ -65,12 +65,44 @@ export type Practice = {
 
 export const practices: Practice[] = [
   {
+    slug: "fractional",
+    nav: "Fractional Executive Services",
+    index: "01",
+    title: "Fractional Executive Services",
+    card: "Three clusters of C-suite seats our executives step into and run: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM). Scoped to the decision.",
+    eyebrow: "01  ·  Fractional",
+    lede: "Our executives step into the seat and run it. The scope is a defined slice of leadership — chief executive, finance, operations, technology, AI, go-to-market, or experience — for enterprise and growth-stage clients. The engagement has a cadence, a written brief, and an end.",
+    description:
+      "Fractional Executive Services from Micap LLC. Fractional C-suite leadership: CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO. Our executives step into the seat and run it.",
+    media: "business",
+    covers: [],
+    approachTitle: "How a fractional engagement runs",
+    approach: [
+      {
+        title: "Step into the seat",
+        body: "Our executives step into the seat and run it.",
+      },
+      {
+        title: "A defined slice",
+        body: "The scope is a defined slice of leadership — chief executive, finance, operations, technology, AI, go-to-market, or experience — for enterprise and growth-stage clients.",
+      },
+      {
+        title: "A cadence, a brief, and an end",
+        body: "The engagement has a cadence, a written brief, and an end.",
+      },
+    ],
+    background: [
+      "Fractional Executive Services puts an executive in the seat without a full-time hire.",
+      "Three clusters: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM).",
+    ],
+  },
+  {
     slug: "software",
     nav: "Software",
-    index: "01",
+    index: "02",
     title: "Software Development & Tech Consulting",
     card: "Scoping, architecture, and delivery advice for enterprises deciding what software is worth building.",
-    eyebrow: "01  ·  Software",
+    eyebrow: "02  ·  Software",
     lede: "Technical counsel for clients who need software judged the way a capital project is judged: scope, risk, and what it will cost to run.",
     description:
       "Software development and technology consulting from Micap LLC. Scoping, architecture, and delivery advice, with lab and AI engineering at sister firm Micap AI.",
@@ -120,19 +152,15 @@ export const practices: Practice[] = [
   {
     slug: "business",
     nav: "Business",
-    index: "02",
+    index: "03",
     title: "Business Consulting",
-    card: "Fractional Executive Services in three clusters: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM). Our executives step into the seat and run it.",
-    eyebrow: "02  ·  Business",
-    lede: "Operating advice and Fractional Executive Services for enterprise and growth-stage clients. Our executives step into the seat and run it, from the operating cadence to the capital plan.",
+    card: "Operating advice for enterprise and growth-stage clients: which efforts run now, which wait, and how people and money are sequenced.",
+    eyebrow: "03  ·  Business",
+    lede: "Operating advice for enterprise and growth-stage clients, from the operating cadence to the capital plan.",
     description:
-      "Business consulting from Micap LLC, including Fractional Executive Services for enterprise and growth-stage clients. Our executives step into and run the seat: fractional CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO leadership, plus interim leadership, board and investor work, operating cadence, and capital planning.",
+      "Business consulting from Micap LLC for enterprise and growth-stage clients. Interim leadership, board and investor work, operating cadence, and capital planning.",
     media: "business",
     covers: [
-      {
-        title: "Fractional Executive Services",
-        body: "Three clusters of C-suite seats our executives step into and run: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM). Scoped to the decision.",
-      },
       {
         title: "A portfolio of initiatives",
         body: "Which efforts run now, which wait, and how people and money are sequenced so the important work is the work that moves.",
@@ -170,17 +198,17 @@ export const practices: Practice[] = [
       },
     ],
     background: [
-      "The business practice works on how a portfolio of initiatives is sequenced, staffed, and paid for, including Fractional Executive Services when the client needs an executive in the seat without a full-time hire.",
+      "The business practice works on how a portfolio of initiatives is sequenced, staffed, and paid for.",
       "That advice sits next to capital-program experience on the order of $27 million a year: the cost of getting the sequence wrong, and the discipline of keeping it right.",
     ],
   },
   {
     slug: "construction",
     nav: "Construction",
-    index: "03",
+    index: "04",
     title: "Construction Consulting",
     card: "Owner’s representation for capital projects: scope, cost, schedule, and cost-overrun prevention.",
-    eyebrow: "03  ·  Construction",
+    eyebrow: "04  ·  Construction",
     lede: "Owner’s-representative support for capital projects. Scope, cost, schedule, and the work of keeping an overrun from becoming the plan.",
     description:
       "Construction consulting from Micap LLC. Owner’s representation, construction management, value engineering, and cost-overrun prevention.",
@@ -230,10 +258,10 @@ export const practices: Practice[] = [
   {
     slug: "real-estate",
     nav: "Real Estate",
-    index: "04",
+    index: "05",
     title: "Real Estate Consulting",
     card: "Capital, acquisitions, and value-add for owners of portfolios and single assets.",
-    eyebrow: "04  ·  Real Estate",
+    eyebrow: "05  ·  Real Estate",
     lede: "Advice on capital, acquisitions, and value-add. For clients deciding what to buy, what to improve, and what a number is actually worth.",
     description:
       "Real estate consulting from Micap LLC. Capital, acquisitions, and value-add for enterprise and private owners.",
@@ -367,6 +395,16 @@ export const whyMicap = [
 
 export const firmCapabilities = [
   {
+    term: "Fractional Executive Services",
+    detail:
+      "Three clusters our executives step into and run: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM).",
+  },
+  {
+    term: "Software Development & Tech Consulting",
+    detail:
+      "Python, TypeScript, AWS, Terraform, Docker, Kubernetes, and PostgreSQL. Lab and AI engineering sit with sister firm Micap AI.",
+  },
+  {
     term: "Owner’s representation",
     detail:
       "Experience on a multi-billion-dollar Class A+ portfolio, from the documents through the field.",
@@ -386,20 +424,11 @@ export const firmCapabilities = [
     detail:
       "Capital, acquisitions, and value-add for multifamily and commercial property.",
   },
-  {
-    term: "Fractional Executive Services",
-    detail:
-      "Three clusters our executives step into and run: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM).",
-  },
-  {
-    term: "Software",
-    detail:
-      "Python, TypeScript, AWS, Terraform, Docker, Kubernetes, and PostgreSQL. Lab and AI engineering sit with sister firm Micap AI.",
-  },
 ];
 
 export const routes: { path: string; priority: number }[] = [
   { path: "/", priority: 1 },
+  { path: "/fractional/", priority: 0.8 },
   { path: "/software/", priority: 0.8 },
   { path: "/business/", priority: 0.8 },
   { path: "/construction/", priority: 0.8 },
@@ -418,9 +447,9 @@ export const organizationJsonLd = {
   description: SITE.description,
   areaServed: "Worldwide",
   knowsAbout: [
+    "Fractional Executive Services",
     "Software consulting",
     "Business consulting",
-    "Fractional Executive Services",
     "Fractional CEO",
     "Fractional executive leadership",
     "Fractional CXO",

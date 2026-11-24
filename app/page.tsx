@@ -8,7 +8,7 @@ export const metadata = pageMetadata({
   title:
     "Micap LLC — Consulting for software, business, construction, and real estate",
   description:
-    "Micap LLC is a boutique multinational consultancy. Four practices: software, business, construction, and real estate, for enterprise clients.",
+    "Micap LLC is a multinational business and technology consultancy. Five practices: fractional executive services, software, business, construction, and real estate, for enterprise clients.",
   path: "/",
 });
 
@@ -19,19 +19,19 @@ export default function HomePage() {
         eyebrow="Micap LLC"
         title={
           <>
-            Four practices.
+            Five practices.
             <br />
             One standard of judgment.
           </>
         }
-        lede="Micap is a boutique multinational consultancy. Software, business, construction, and real estate for enterprise clients, with our practice leads on the work."
+        lede="Micap is a multinational business and technology consultancy. Fractional executive services, software, business, construction, and real estate for enterprise clients, with our practice leads on the work."
         mediaKey="home"
       >
         <a
           href="#divisions"
           className="inline-flex min-h-12 items-center bg-cream px-5 text-sm font-semibold text-ink hover:bg-white"
         >
-          The four divisions
+          The five divisions
         </a>
         <Link
           href="/contact/"
@@ -47,7 +47,7 @@ export default function HomePage() {
       >
         <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
           <h2 className="max-w-xl font-display text-4xl font-medium tracking-tight text-ink sm:text-5xl">
-            Four divisions.
+            Five divisions.
           </h2>
           <p className="max-w-sm text-base leading-relaxed text-muted">
             Each practice is a way into the same firm. Start with the decision
@@ -133,9 +133,10 @@ export default function HomePage() {
               What the firm brings
             </h2>
             <p className="mt-6 max-w-prose text-base leading-relaxed text-muted">
-              Four practices in one firm: construction, capital programs,
-              acquisitions, and software. The figures below describe the scale
-              of work our consultants draw on. They are not a client roster.
+              Five practices in one firm: fractional executive services,
+              software, business, construction, and real estate. The figures
+              below describe the scale of work our consultants draw on. They
+              are not a client roster.
             </p>
             <Link
               href="/about/"

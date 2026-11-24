@@ -7,7 +7,7 @@ import { CONTACT_EMAIL, firmCapabilities, practices } from "@/lib/site";
 export const metadata = pageMetadata({
   title: "About",
   description:
-    "Micap LLC is a boutique multinational consultancy. Software, business, construction, and real estate for enterprise clients.",
+    "Micap LLC is a multinational business and technology consultancy. Fractional executive services, software, business, construction, and real estate for enterprise clients.",
   path: "/about/",
 });
 
@@ -16,8 +16,8 @@ export default function AboutPage() {
     <>
       <SplitHero
         eyebrow="The firm"
-        title="A boutique firm for enterprise decisions."
-        lede="Micap advises clients who build, buy, and operate across markets. Four practices, one standard, and consultants who stay with the engagement."
+        title="A multinational business and technology consultancy for enterprise decisions."
+        lede="Micap advises clients who build, buy, and operate across markets. Five practices, one standard, and consultants who stay with the engagement."
         mediaKey="about"
       />
 
@@ -28,10 +28,11 @@ export default function AboutPage() {
           </h2>
           <div className="max-w-prose space-y-4 text-base leading-relaxed text-muted lg:col-span-8">
             <p>
-              Micap LLC is a boutique multinational consultancy. We work with
-              enterprise clients through four practices: software development
-              and tech consulting, business consulting, construction
-              consulting, and real estate consulting. A client can start in
+              Micap LLC is a multinational business and technology consultancy. We work with
+              enterprise clients through five practices: fractional executive
+              services, software development and tech consulting, business
+              consulting, construction consulting, and real estate consulting.
+              A client can start in
               one practice. The work often crosses them.
             </p>
             <p>
@@ -91,7 +92,7 @@ export default function AboutPage() {
 
       <section className="mx-auto max-w-page px-6 py-16 sm:px-10 sm:py-20">
         <h2 className="font-display text-3xl font-medium tracking-tight text-ink">
-          The four divisions
+          The five divisions
         </h2>
         <ul className="mt-8 grid gap-4 sm:grid-cols-2">
           {practices.map((practice) => (

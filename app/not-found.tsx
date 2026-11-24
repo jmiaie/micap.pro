@@ -10,7 +10,7 @@ export default function NotFound() {
         This page is not on the site.
       </h1>
       <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">
-        The address may be out of date. The four divisions, the firm, and
+        The address may be out of date. The five divisions, the firm, and
         contact are linked below.
       </p>
       <div className="mt-8 flex flex-wrap gap-3">

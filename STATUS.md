@@ -7,7 +7,7 @@
 
 ## What this repo is
 
-Marketing site for **Micap LLC**, a boutique multinational consultancy: software, business, construction, and real estate. Static export only. No application backend, no form processor, and no secrets.
+Marketing site for **Micap LLC**, a multinational business and technology consultancy: fractional executive services, software, business, construction, and real estate. Static export only. No application backend, no form processor, and no secrets.
 
 Published contact: `info@micap.pro` (must exist as a Google Workspace alias). Phone numbers are not published. The site does not name an individual.
 

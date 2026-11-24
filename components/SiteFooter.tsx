@@ -10,8 +10,9 @@ export function SiteFooter() {
             Micap
           </p>
           <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted">
-            A boutique multinational consultancy. Software, business,
-            construction, and real estate for enterprise clients.
+            A multinational business and technology consultancy. Fractional
+            executive services, software, business, construction, and real
+            estate for enterprise clients.
           </p>
         </div>
         <div className="md:col-span-3">
