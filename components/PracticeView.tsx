@@ -15,57 +15,29 @@ export function PracticeView({
   const others = practices.filter((item) => item.slug !== practice.slug);
   const url = `https://micap.pro/${practice.slug}/`;
   const offered =
-    practice.slug === "business"
-      ? [
-          {
-            "@type": "ListItem",
-            position: 1,
-            item: {
-              "@type": "Service",
-              name: "Fractional Executive Services",
-              description: practice.covers.find(
-                (item) => item.title === "Fractional Executive Services",
-              )?.body,
-              hasOfferCatalog: {
-                "@type": "OfferCatalog",
-                name: "Fractional Executive Services",
-                itemListElement: fractionalGroups.map((group, groupIndex) => ({
-                  "@type": "ListItem",
-                  position: groupIndex + 1,
-                  item: {
-                    "@type": "Service",
-                    name: group.title,
-                    description: group.framing,
-                    hasOfferCatalog: {
-                      "@type": "OfferCatalog",
-                      name: group.title,
-                      itemListElement: group.roles.map((role, roleIndex) => ({
-                        "@type": "ListItem",
-                        position: roleIndex + 1,
-                        item: {
-                          "@type": "Service",
-                          name: role.title,
-                          description: role.body,
-                        },
-                      })),
-                    },
-                  },
-                })),
-              },
+    practice.slug === "fractional"
+      ? fractionalGroups.map((group, groupIndex) => ({
+          "@type": "ListItem",
+          position: groupIndex + 1,
+          item: {
+            "@type": "Service",
+            name: group.title,
+            description: group.framing,
+            hasOfferCatalog: {
+              "@type": "OfferCatalog",
+              name: group.title,
+              itemListElement: group.roles.map((role, roleIndex) => ({
+                "@type": "ListItem",
+                position: roleIndex + 1,
+                item: {
+                  "@type": "Service",
+                  name: role.title,
+                  description: role.body,
+                },
+              })),
             },
           },
-          ...practice.covers
-            .filter((item) => item.title !== "Fractional Executive Services")
-            .map((item, index) => ({
-              "@type": "ListItem",
-              position: index + 2,
-              item: {
-                "@type": "Service",
-                name: item.title,
-                description: item.body,
-              },
-            })),
-        ]
+        }))
       : practice.covers.map((item, index) => ({
           "@type": "ListItem",
           position: index + 1,
@@ -139,31 +111,33 @@ export function PracticeView({
         </Link>
       </SplitHero>
 
-      <section className="mx-auto max-w-page px-6 py-16 sm:px-10 sm:py-24">
-        <div className="max-w-2xl">
-          <h2 className="font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
-            What the work covers
-          </h2>
-        </div>
-        <ol className="mt-10 border-t border-line">
-          {practice.covers.map((item, index) => (
-            <li
-              key={item.title}
-              className="grid gap-3 border-b border-line py-8 md:grid-cols-12 md:gap-8"
-            >
-              <p className="font-display text-2xl text-brass md:col-span-2">
-                {String(index + 1).padStart(2, "0")}
-              </p>
-              <h3 className="font-display text-2xl font-medium text-ink md:col-span-4">
-                {item.title}
-              </h3>
-              <p className="text-base leading-relaxed text-muted md:col-span-6">
-                {item.body}
-              </p>
-            </li>
-          ))}
-        </ol>
-      </section>
+      {practice.covers.length > 0 ? (
+        <section className="mx-auto max-w-page px-6 py-16 sm:px-10 sm:py-24">
+          <div className="max-w-2xl">
+            <h2 className="font-display text-3xl font-medium tracking-tight text-ink sm:text-4xl">
+              What the work covers
+            </h2>
+          </div>
+          <ol className="mt-10 border-t border-line">
+            {practice.covers.map((item, index) => (
+              <li
+                key={item.title}
+                className="grid gap-3 border-b border-line py-8 md:grid-cols-12 md:gap-8"
+              >
+                <p className="font-display text-2xl text-brass md:col-span-2">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="font-display text-2xl font-medium text-ink md:col-span-4">
+                  {item.title}
+                </h3>
+                <p className="text-base leading-relaxed text-muted md:col-span-6">
+                  {item.body}
+                </p>
+              </li>
+            ))}
+          </ol>
+        </section>
+      ) : null}
 
       {children}
 
@@ -208,7 +182,7 @@ export function PracticeView({
           <h2 className="font-display text-3xl font-medium tracking-tight text-ink">
             The other divisions
           </h2>
-          <ul className="mt-8 grid gap-4 md:grid-cols-3">
+          <ul className="mt-8 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
             {others.map((item) => (
               <li key={item.slug}>
                 <Link
