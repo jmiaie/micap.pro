@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { InquiryBand } from "@/components/InquiryBand";
 import { JsonLd } from "@/components/JsonLd";
 import { SplitHero } from "@/components/SplitHero";
-import { practices, type Practice } from "@/lib/site";
+import { fractionalEngagements, practices, type Practice } from "@/lib/site";
 
 export function PracticeView({
   practice,
@@ -14,6 +14,10 @@ export function PracticeView({
 }) {
   const others = practices.filter((item) => item.slug !== practice.slug);
   const url = `https://micap.pro/${practice.slug}/`;
+  const offered = [
+    ...practice.covers,
+    ...(practice.slug === "business" ? fractionalEngagements : []),
+  ];
 
   return (
     <>
@@ -50,7 +54,20 @@ export function PracticeView({
             name: "Micap LLC",
             url: "https://micap.pro",
           },
-          areaServed: "US",
+          areaServed: "Worldwide",
+          hasOfferCatalog: {
+            "@type": "OfferCatalog",
+            name: practice.title,
+            itemListElement: offered.map((item, index) => ({
+              "@type": "ListItem",
+              position: index + 1,
+              item: {
+                "@type": "Service",
+                name: item.title,
+                description: item.body,
+              },
+            })),
+          },
         }}
       />
       <SplitHero

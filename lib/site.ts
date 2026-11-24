@@ -122,13 +122,17 @@ export const practices: Practice[] = [
     nav: "Business",
     index: "02",
     title: "Business Consulting",
-    card: "Operating counsel for enterprise clients, when a decision crosses a project, a property, and a P&L.",
+    card: "Operating counsel and fractional executive engagements for enterprise and growth-stage clients.",
     eyebrow: "02  ·  Business",
-    lede: "Operating advice for clients whose decisions cross a program, a property, and a P&L. Practice leads stay with the work.",
+    lede: "Operating advice and fractional leadership for enterprise and growth-stage clients. Practice leads stay with the work, from the operating cadence to the capital plan.",
     description:
-      "Business consulting from Micap LLC. Advice on programs, operations, and decisions that cross a project, a property, and a P&L.",
+      "Business consulting from Micap LLC, including fractional executive and advisory engagements for enterprise and growth-stage clients: fractional CFO, COO, and CTO support, interim leadership, board and investor advisory, operating cadence, and capital planning.",
     media: "business",
     covers: [
+      {
+        title: "Fractional consulting",
+        body: "Fractional CFO, COO, and CTO coverage, interim leadership, board and investor advisory, operating cadence, and capital planning. Scoped to the decision, staffed by our consultants.",
+      },
       {
         title: "A portfolio of initiatives",
         body: "Which efforts run now, which wait, and how people and money are sequenced so the important work is the work that moves.",
@@ -166,7 +170,7 @@ export const practices: Practice[] = [
       },
     ],
     background: [
-      "The business practice advises on how a portfolio of initiatives is sequenced, staffed, and paid for.",
+      "The business practice advises on how a portfolio of initiatives is sequenced, staffed, and paid for, including fractional executive coverage when the client needs leadership without a full-time hire.",
       "That advice sits next to capital-program experience on the order of $27 million a year: the cost of getting the sequence wrong, and the discipline of keeping it right.",
     ],
   },
@@ -283,6 +287,29 @@ export const practiceBySlug = Object.fromEntries(
   practices.map((practice) => [practice.slug, practice]),
 ) as Record<Practice["slug"], Practice>;
 
+export const fractionalEngagements = [
+  {
+    title: "Fractional CFO, COO, and CTO",
+    body: "Part-time executive coverage for finance, operations, or technology, working inside the client’s team and reporting rhythm.",
+  },
+  {
+    title: "Interim leadership",
+    body: "A defined stretch of leadership while a search is underway or a transition is in motion, with a written scope and an end date.",
+  },
+  {
+    title: "Board and investor advisory",
+    body: "Preparation and counsel for boards and investors: the numbers, the narrative, and the decisions on the table.",
+  },
+  {
+    title: "Operating cadence",
+    body: "The weekly and monthly rhythm that keeps a portfolio of initiatives moving, and shows where it has stalled.",
+  },
+  {
+    title: "Capital planning",
+    body: "How capital is sequenced against the operating plan, including what is spent now and what can wait.",
+  },
+];
+
 export const whyMicap = [
   {
     index: "01",
@@ -328,6 +355,11 @@ export const firmCapabilities = [
       "Capital, acquisitions, and value-add for multifamily and commercial property.",
   },
   {
+    term: "Fractional leadership",
+    detail:
+      "Fractional CFO, COO, and CTO coverage, interim leadership, and board and investor advisory for enterprise and growth-stage clients.",
+  },
+  {
     term: "Software",
     detail:
       "Python, TypeScript, AWS, Terraform, Docker, Kubernetes, and PostgreSQL. Lab and AI engineering sit with sister firm Micap AI.",
@@ -356,6 +388,8 @@ export const organizationJsonLd = {
   knowsAbout: [
     "Software consulting",
     "Business consulting",
+    "Fractional consulting",
+    "Fractional executive leadership",
     "Construction consulting",
     "Real estate consulting",
     "Owner's representation",
