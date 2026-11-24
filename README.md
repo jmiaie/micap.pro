@@ -1,36 +1,44 @@
 # micap.pro
 
-> **Status (2026-09-30):** stalled marketing WIP on default branch `claude/rebuild-micap-website-0xb8u` (**no `main`**). See [`STATUS.md`](STATUS.md).
+Marketing site for **Micap LLC**, Jeffrey Milam’s consulting firm. Four divisions:
 
-Marketing site for **Micap LLC** — project management and management
-consulting across sustainable energy, construction, real estate, and
-technology.
+1. Software Development & Tech Consulting
+2. Business Consulting
+3. Construction Consulting
+4. Real Estate Consulting (capital, acquisitions, value-add)
 
-Built with Next.js 14 + Tailwind CSS, statically exported and hosted on
-**GitHub Pages**.
+The sister firm [Micap AI](https://micap.ai) is the Software Lab and AI Engineering practice. It is linked from the software division. The published contact address is `jmilam@micap.pro`.
+
+Built with Next.js 14 and Tailwind CSS. The production build is a **fully static export** (`output: 'export'`) and can be hosted on Cloudflare Pages or GitHub Pages.
 
 ## Development
 
 ```bash
 npm install
-npm run dev    # local dev server at http://localhost:3000
+npm run dev    # http://localhost:3000
 npm run build  # static export to ./out
+npm run lint
 ```
+
+`npm run build` writes the site to `./out`, including `sitemap.xml`, `robots.txt`, and `404.html`. Video files are self-hosted under `public/media/`. Sources and licenses are in [`CREDITS.md`](CREDITS.md).
 
 ## Deployment
 
-Every push to the default branch runs
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), which builds
-the static export and publishes it to GitHub Pages. It can also be run
-manually from the Actions tab ("Deploy to GitHub Pages" → Run workflow).
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds the static export and publishes `./out` to GitHub Pages on pushes to `main` and to `claude/rebuild-micap-website-0xb8u`. It can also be run from the Actions tab.
 
-One-time setup after the first deploy:
+The same `./out` directory is what you upload for Cloudflare Pages (framework preset: Next.js, or a direct upload of the export). No server runtime and no environment secrets are required.
 
-1. GitHub → repo **Settings → Pages** → Custom domain: `micap.pro` → Save.
-2. Once the DNS check passes and the certificate is issued, tick
-   **Enforce HTTPS**.
+One-time GitHub Pages setup, if it is not already done:
+
+1. GitHub → repo **Settings → Pages** → Source: **GitHub Actions**.
+2. Custom domain: `micap.pro` → Save. `public/CNAME` already contains `micap.pro`.
+3. After the DNS check passes and the certificate is issued, tick **Enforce HTTPS**.
+
+`main` was created from the previous default tip (`claude/rebuild-micap-website-0xb8u`) so pull requests have a normal base. If GitHub still shows the old branch as the default, set the default branch to `main` in the repository settings when you are ready. This repository does not change DNS.
 
 ## DNS (domain registered at Porkbun)
+
+**Preserve mail.** The Google Workspace **MX** records, the **SPF** TXT record, the **`google-site-verification`** TXT record, and the **`_dmarc`** TXT record must be preserved. Do not replace them with a host’s default email forwarding. The website can move between GitHub Pages and Cloudflare Pages; those four kinds of records are what keep `jmilam@micap.pro` working. This repository does not manage DNS.
 
 As of June 2026 the live zone is a leftover **Cloudflare** zone
 (`jerry.ns.cloudflare.com` / `sarah.ns.cloudflare.com`) from the GoDaddy
@@ -44,6 +52,8 @@ elsewhere), **then** reset the nameservers to Porkbun defaults. During
 propagation both zones answer the same Google MX targets, so mail is never
 interrupted. DNSSEC is not enabled on the domain (verified June 2026), so
 the nameserver switch carries no DS-record risk.
+
+The A and `www` records below are the website records for **GitHub Pages**. Hosting the same static export on Cloudflare Pages would use different website records. Either way, the Google Workspace MX, SPF, `google-site-verification`, and `_dmarc` records must be preserved.
 
 ### 1. Stage records at Porkbun
 
@@ -97,12 +107,11 @@ MX at the same Google servers.
 ## Email
 
 Mail for `micap.pro` is hosted on **Google Workspace** (`jmilam@micap.pro`
-and aliases), routed by the MX records above — independent of the website
-and its hosting.
+and any aliases), routed by the MX records above — independent of the
+website and its hosting.
 
-The site's published contact address is `manager@micap.pro`, configured as
-an **email alias** of `jmilam@micap.pro` in the Google Admin console
-(Directory → Users → select user → User information → Email aliases). To
-reply *from* the address, add it in Gmail → Settings → Accounts → "Send
-mail as". If it ever needs a dedicated mailbox, delete the alias and create
-a `manager@` user (one Workspace license) — no DNS changes required.
+The site’s published contact address is `jmilam@micap.pro`. If a
+`manager@micap.pro` alias exists in the Google Admin console, that is a
+mailbox setting, not a DNS record. Changing aliases does not require DNS
+edits, and it must not be used as a reason to touch MX, SPF,
+`google-site-verification`, or `_dmarc`.

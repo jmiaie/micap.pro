@@ -2,22 +2,31 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <main className="flex min-h-screen flex-col items-center justify-center px-6 text-center">
-      <p className="text-sm font-semibold uppercase tracking-widest text-accent">
+    <section className="mx-auto flex min-h-[60vh] max-w-page flex-col justify-center px-6 py-24 sm:px-10">
+      <p className="text-xs font-semibold uppercase tracking-eyebrow text-brass">
         404
       </p>
-      <h1 className="mt-4 font-display text-4xl font-bold tracking-tightest text-ink">
-        Page not found
+      <h1 className="mt-4 font-display text-5xl font-medium tracking-tight text-ink">
+        This page is not on the site.
       </h1>
-      <p className="mt-4 max-w-prose text-muted">
-        The page you are looking for does not exist or has moved.
+      <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">
+        The address may be out of date. The four divisions, the firm, and
+        contact are linked below.
       </p>
-      <Link
-        href="/"
-        className="mt-8 rounded-md bg-accent px-6 py-3 text-sm font-semibold text-white transition-opacity hover:opacity-90"
-      >
-        Back to micap.pro
-      </Link>
-    </main>
+      <div className="mt-8 flex flex-wrap gap-3">
+        <Link
+          href="/"
+          className="inline-flex min-h-12 items-center bg-ink px-5 text-sm font-semibold text-cream"
+        >
+          Back to Micap
+        </Link>
+        <Link
+          href="/contact/"
+          className="inline-flex min-h-12 items-center border border-ink px-5 text-sm font-semibold text-ink"
+        >
+          Contact
+        </Link>
+      </div>
+    </section>
   );
 }
