@@ -122,16 +122,16 @@ export const practices: Practice[] = [
     nav: "Business",
     index: "02",
     title: "Business Consulting",
-    card: "Operating counsel and fractional executive engagements for enterprise and growth-stage clients.",
+    card: "Operating counsel and fractional executive engagements — CFO, COO, CTO, CXO, CAIO, and go-to-market leadership — for enterprise and growth-stage clients.",
     eyebrow: "02  ·  Business",
-    lede: "Operating advice and fractional leadership for enterprise and growth-stage clients. Practice leads stay with the work, from the operating cadence to the capital plan.",
+    lede: "Operating advice and fractional leadership for enterprise and growth-stage clients, from the C-suite seat the company needs to the operating cadence and the capital plan.",
     description:
-      "Business consulting from Micap LLC, including fractional executive and advisory engagements for enterprise and growth-stage clients: fractional CFO, COO, and CTO support, interim leadership, board and investor advisory, operating cadence, and capital planning.",
+      "Business consulting from Micap LLC, including fractional executive and advisory engagements for enterprise and growth-stage clients: fractional CFO, COO, CTO, CXO, and CAIO support, go-to-market and CMO-style leadership, interim leadership, board and investor advisory, operating cadence, and capital planning.",
     media: "business",
     covers: [
       {
         title: "Fractional consulting",
-        body: "Fractional CFO, COO, and CTO coverage, interim leadership, board and investor advisory, operating cadence, and capital planning. Scoped to the decision, staffed by our consultants.",
+        body: "Fractional CFO, COO, CTO, CXO, and CAIO coverage, go-to-market and CMO-style leadership, interim leadership, board and investor advisory, operating cadence, and capital planning. Scoped to the decision, staffed by our consultants.",
       },
       {
         title: "A portfolio of initiatives",
@@ -293,6 +293,18 @@ export const fractionalEngagements = [
     body: "Part-time executive coverage for finance, operations, or technology, working inside the client’s team and reporting rhythm.",
   },
   {
+    title: "Fractional CXO",
+    body: "General C-suite coverage, including chief experience leadership, shaped to the seat the company actually needs rather than a fixed job description.",
+  },
+  {
+    title: "Fractional CAIO",
+    body: "Chief AI Officer coverage: AI strategy, governance, adoption roadmaps, and vendor and model selection, tied to the operating plan.",
+  },
+  {
+    title: "Fractional GTM and CMO-style leadership",
+    body: "Go-to-market strategy, positioning, demand generation, and revenue and marketing operations, run as a defined leadership engagement.",
+  },
+  {
     title: "Interim leadership",
     body: "A defined stretch of leadership while a search is underway or a transition is in motion, with a written scope and an end date.",
   },
@@ -357,7 +369,7 @@ export const firmCapabilities = [
   {
     term: "Fractional leadership",
     detail:
-      "Fractional CFO, COO, and CTO coverage, interim leadership, and board and investor advisory for enterprise and growth-stage clients.",
+      "Fractional CFO, COO, CTO, CXO, and CAIO coverage, go-to-market leadership, interim leadership, and board and investor advisory for enterprise and growth-stage clients.",
   },
   {
     term: "Software",
@@ -390,6 +402,9 @@ export const organizationJsonLd = {
     "Business consulting",
     "Fractional consulting",
     "Fractional executive leadership",
+    "Fractional CXO",
+    "Fractional CAIO",
+    "Go-to-market leadership",
     "Construction consulting",
     "Real estate consulting",
     "Owner's representation",

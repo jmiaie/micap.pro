@@ -24,9 +24,9 @@ export default function BusinessPage() {
           <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">
             Fractional executive and advisory engagements for enterprise and
             growth-stage clients. Our consultants take a defined slice of
-            leadership — finance, operations, technology, or the board calendar
-            — and stay on that scope. The engagement has a cadence, a written
-            brief, and an end.
+            leadership — finance, operations, technology, experience, AI, or
+            go-to-market — and stay on that scope. The engagement has a cadence,
+            a written brief, and an end.
           </p>
           <ul className="mt-12 grid gap-8 md:grid-cols-2">
             {fractionalEngagements.map((item) => (
