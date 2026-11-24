@@ -122,16 +122,16 @@ export const practices: Practice[] = [
     nav: "Business",
     index: "02",
     title: "Business Consulting",
-    card: "Fractional Executive Services: our executives step into the C-suite seat — CFO, COO, CTO, CAIO, CMO/GTM, and CXO — and run it.",
+    card: "Fractional Executive Services: our executives step into the C-suite seat — CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO — and run it.",
     eyebrow: "02  ·  Business",
     lede: "Operating advice and Fractional Executive Services for enterprise and growth-stage clients. Our executives step into the seat and run it, from the operating cadence to the capital plan.",
     description:
-      "Business consulting from Micap LLC, including Fractional Executive Services for enterprise and growth-stage clients. Our executives step into and run the seat: fractional CFO, COO, CTO, CAIO, CMO/GTM, and CXO leadership, plus interim leadership, board and investor work, operating cadence, and capital planning.",
+      "Business consulting from Micap LLC, including Fractional Executive Services for enterprise and growth-stage clients. Our executives step into and run the seat: fractional CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO leadership, plus interim leadership, board and investor work, operating cadence, and capital planning.",
     media: "business",
     covers: [
       {
         title: "Fractional Executive Services",
-        body: "Our executives step into and run the seat: CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership, board and investor work, operating cadence, and capital planning. Scoped to the decision.",
+        body: "Our executives step into and run the seat: CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership, board and investor work, operating cadence, and capital planning. Scoped to the decision.",
       },
       {
         title: "A portfolio of initiatives",
@@ -289,6 +289,10 @@ export const practiceBySlug = Object.fromEntries(
 
 export const fractionalEngagements = [
   {
+    title: "Fractional CEO",
+    body: "Our executives step into the chief executive seat and run it: strategy, leadership through transitions, turnarounds, scaling, and board and investor relations.",
+  },
+  {
     title: "Fractional CFO, COO, and CTO",
     body: "Our executives step into the finance, operations, or technology seat and run it part time, inside the client’s team and reporting rhythm.",
   },
@@ -369,7 +373,7 @@ export const firmCapabilities = [
   {
     term: "Fractional Executive Services",
     detail:
-      "Our executives step into and run the seat: CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership and board work, for enterprise and growth-stage clients.",
+      "Our executives step into and run the seat: CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO, plus interim leadership and board work, for enterprise and growth-stage clients.",
   },
   {
     term: "Software",
@@ -401,6 +405,7 @@ export const organizationJsonLd = {
     "Software consulting",
     "Business consulting",
     "Fractional Executive Services",
+    "Fractional CEO",
     "Fractional executive leadership",
     "Fractional CXO",
     "Fractional CAIO",

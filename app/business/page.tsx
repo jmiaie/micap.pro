@@ -25,12 +25,12 @@ export default function BusinessPage() {
             Fractional Executive Services
           </h2>
           <p className="mt-4 max-w-prose font-medium leading-relaxed text-ink">
-            Fractional C-suite leadership: CFO, COO, CTO, CAIO, CMO/GTM, and CXO.
+            Fractional C-suite leadership: CEO, CFO, COO, CTO, CAIO, CMO/GTM, and CXO.
           </p>
           <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">
             Our executives step into the seat and run it. The scope is a defined
-            slice of leadership — finance, operations, technology, AI,
-            go-to-market, or experience — for enterprise and growth-stage
+            slice of leadership — chief executive, finance, operations,
+            technology, AI, go-to-market, or experience — for enterprise and growth-stage
             clients. The engagement has a cadence, a written brief, and an end.
           </p>
           <ul className="mt-12 grid gap-8 md:grid-cols-2">
