@@ -5,7 +5,7 @@ import { practiceBySlug } from "@/lib/site";
 const practice = practiceBySlug.construction;
 
 const figures = [
-  { value: "$3B+", label: "Class A+ portfolio, as owner’s representative" },
+  { value: "$3 billion+", label: "Class A+ portfolio, as owner’s representative" },
   { value: "$250M+", label: "Project size" },
   { value: "$25M+", label: "Annual spend" },
   { value: "3,600+", label: "Units in the program" },
