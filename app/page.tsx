@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { InquiryBand } from "@/components/InquiryBand";
+import { ProofBand } from "@/components/ProofBand";
 import { SplitHero } from "@/components/SplitHero";
 import { pageMetadata } from "@/lib/metadata";
 import { firmCapabilities, media, practices, whyMicap } from "@/lib/site";
@@ -40,6 +41,8 @@ export default function HomePage() {
           Start a conversation
         </Link>
       </SplitHero>
+
+      <ProofBand />
 
       <section
         id="divisions"
