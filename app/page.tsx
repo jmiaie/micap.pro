@@ -1,6 +1,9 @@
 import Link from "next/link";
+import { CinematicHero } from "@/components/effects/CinematicHero";
+import { DivisionField } from "@/components/effects/DivisionField";
+import { Object3D } from "@/components/effects/Object3D";
 import { InquiryBand } from "@/components/InquiryBand";
-import { SplitHero } from "@/components/SplitHero";
+import { homeEffect, shapeForPractice } from "@/lib/effects";
 import { pageMetadata } from "@/lib/metadata";
 import { firmCapabilities, media, practices, whyMicap } from "@/lib/site";
 
@@ -15,7 +18,8 @@ export const metadata = pageMetadata({
 export default function HomePage() {
   return (
     <>
-      <SplitHero
+      <CinematicHero
+        effect={homeEffect}
         eyebrow="Micap LLC"
         title={
           <>
@@ -25,7 +29,7 @@ export default function HomePage() {
           </>
         }
         lede="Micap is a multinational business and technology consultancy. Fractional executive services, software, business, construction, and real estate for enterprise clients, with our practice leads on the work."
-        mediaKey="home"
+        media={media.home}
       >
         <a
           href="#divisions"
@@ -39,7 +43,7 @@ export default function HomePage() {
         >
           Start a conversation
         </Link>
-      </SplitHero>
+      </CinematicHero>
 
       <section
         id="divisions"
@@ -54,11 +58,24 @@ export default function HomePage() {
             you actually have.
           </p>
         </div>
-        <ul className="mt-12 grid gap-6 md:grid-cols-2">
+        <div className="mt-12 lg:grid lg:grid-cols-12 lg:items-start lg:gap-10">
+          <div className="lg:col-span-5">
+            <div className="lg:sticky lg:top-[5.5rem]">
+              <DivisionField />
+            </div>
+          </div>
+          <ul className="grid gap-6 md:grid-cols-2 lg:col-span-7 lg:grid-cols-1">
           {practices.map((practice) => {
             const poster = media[practice.media];
+            const shape = shapeForPractice(practice.slug);
             return (
-              <li key={practice.slug} className="group relative border border-line bg-panel">
+              <li
+                key={practice.slug}
+                data-division-shape={shape}
+                data-division-index={practice.index}
+                data-division-title={practice.title}
+                className="group relative border border-line bg-panel"
+              >
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink">
                   <img
                     src={poster.poster}
@@ -71,6 +88,13 @@ export default function HomePage() {
                     decoding="async"
                     className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:group-hover:scale-[1.03]"
                   />
+                  <div className="pointer-events-none absolute bottom-3 right-3 h-[4.5rem] w-[4.5rem] border border-cream/25 bg-ink/60">
+                    <Object3D
+                      shape={shape}
+                      palette="micap"
+                      particleCount={420}
+                    />
+                  </div>
                 </div>
                 <div className="p-6 sm:p-8">
                   <p className="text-xs font-semibold uppercase tracking-eyebrow text-brass">
@@ -94,7 +118,8 @@ export default function HomePage() {
               </li>
             );
           })}
-        </ul>
+          </ul>
+        </div>
       </section>
 
       <section className="border-t border-line bg-panel">
