@@ -1,15 +1,16 @@
 /**
- * Same four figures as the construction practice page.
- * Kept in this preview so the band does not edit lib/site.ts.
+ * Portfolio and annual-spend wording follows the softened figures.
+ * Unit and asset counts are the ones already published on the site.
+ * No project-size figure is shown here.
  */
 export const practiceProof = [
   {
-    value: "$3B",
+    value: "Over $3 billion",
     label: "Class A+ portfolio, as owner’s representative",
   },
   {
     value: "~$27M",
-    label: "Capital programs a year",
+    label: "Annual spend",
   },
   {
     value: "3,600+",
@@ -62,17 +63,25 @@ export function PracticeProof({ layout }: Props) {
             *
           </span>
           <dt
-            className={`font-sans font-medium leading-[1.05] tracking-[-0.03em] text-cream ${
-              layout === "tiles"
-                ? "text-[1.85rem] sm:text-[2rem]"
-                : "text-[2.4rem] sm:col-span-4 sm:text-5xl"
+            className={`pr-6 font-sans font-medium tracking-[-0.03em] text-cream ${
+              item.value.length > 8
+                ? layout === "tiles"
+                  ? "text-[1.45rem] leading-tight sm:text-[1.5rem]"
+                  : "text-[1.7rem] leading-tight sm:col-span-5 sm:text-[2.15rem]"
+                : layout === "tiles"
+                  ? "text-[1.85rem] leading-[1.05] sm:text-[2rem]"
+                  : "text-[2.4rem] leading-[1.05] sm:col-span-4 sm:text-5xl"
             }`}
           >
             {item.value}
           </dt>
           <dd
             className={`text-sm leading-snug text-cream/80 ${
-              layout === "tiles" ? "mt-6" : "sm:col-span-7 sm:mb-1"
+              layout === "tiles"
+                ? "mt-6"
+                : item.value.length > 8
+                  ? "sm:col-span-6 sm:mb-1"
+                  : "sm:col-span-7 sm:mb-1"
             }`}
           >
             {item.label}
