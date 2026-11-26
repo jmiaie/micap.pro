@@ -3,6 +3,7 @@ import { CinematicHero } from "@/components/effects/CinematicHero";
 import { DivisionField } from "@/components/effects/DivisionField";
 import { Object3D } from "@/components/effects/Object3D";
 import { InquiryBand } from "@/components/InquiryBand";
+import { ProofBand } from "@/components/ProofBand";
 import { homeEffect, shapeForPractice } from "@/lib/effects";
 import { pageMetadata } from "@/lib/metadata";
 import { firmCapabilities, media, practices, whyMicap } from "@/lib/site";
@@ -44,6 +45,8 @@ export default function HomePage() {
           Start a conversation
         </Link>
       </CinematicHero>
+
+      <ProofBand />
 
       <section
         id="divisions"

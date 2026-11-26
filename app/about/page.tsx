@@ -1,6 +1,6 @@
 import Link from "next/link";
+import { AboutHero } from "@/components/AboutHero";
 import { InquiryBand } from "@/components/InquiryBand";
-import { SplitHero } from "@/components/SplitHero";
 import { pageMetadata } from "@/lib/metadata";
 import { CONTACT_EMAIL, firmCapabilities, practices } from "@/lib/site";
 
@@ -14,12 +14,7 @@ export const metadata = pageMetadata({
 export default function AboutPage() {
   return (
     <>
-      <SplitHero
-        eyebrow="The firm"
-        title="A multinational business and technology consultancy for enterprise decisions."
-        lede="Micap advises clients who build, buy, and operate across markets. Five practices, one standard, and consultants who stay with the engagement."
-        mediaKey="about"
-      />
+      <AboutHero />
 
       <section className="mx-auto max-w-page px-6 py-16 sm:px-10 sm:py-24">
         <div className="grid gap-10 lg:grid-cols-12">
