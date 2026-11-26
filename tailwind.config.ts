@@ -31,24 +31,6 @@ const config: Config = {
       letterSpacing: {
         eyebrow: "0.22em",
       },
-      keyframes: {
-        rise: {
-          from: { opacity: "0", transform: "translateY(22px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        rake: {
-          from: { transform: "translate3d(-10%, 0, 0) rotate(-18deg)" },
-          to: { transform: "translate3d(12%, 0, 0) rotate(-18deg)" },
-        },
-      },
-      animation: {
-        "rise-1": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) both",
-        "rise-2": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.08s both",
-        "rise-3": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.16s both",
-        "rise-4": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both",
-        "rise-5": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both",
-        rake: "rake 18s ease-in-out infinite alternate",
-      },
     },
   },
   plugins: [],
