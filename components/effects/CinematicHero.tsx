@@ -28,14 +28,11 @@ export function CinematicHero({
 }: Props) {
   const trackRef = useRef<HTMLDivElement>(null);
   const [unsupported, setUnsupported] = useState(false);
-  const [preview, setPreview] = useState(false);
   const scroll = effect.mode === "build" || effect.mode === "dismantle";
-  const brush = effect.mode === "rise" || effect.mode === "dissolve";
   const visual = {
     shape: effect.shape,
     palette: effect.palette,
     particleCount: effect.particleCount,
-    preview,
     scrollRef: scroll ? trackRef : undefined,
     onStatus: (status: "ready" | "unsupported") => {
       if (status === "unsupported") setUnsupported(true);
@@ -96,16 +93,6 @@ export function CinematicHero({
             </p>
             {children ? (
               <div className="mt-10 flex flex-wrap gap-3">{children}</div>
-            ) : null}
-            {brush ? (
-              <button
-                type="button"
-                aria-pressed={preview}
-                onClick={() => setPreview((value) => !value)}
-                className="mt-4 inline-flex min-h-11 items-center text-sm font-medium text-brass-soft hover:text-cream motion-reduce:hidden"
-              >
-                {preview ? "Reform the surface" : "Preview the particles"}
-              </button>
             ) : null}
           </div>
         </div>

@@ -34,6 +34,8 @@ export type PieceDef = {
   depthWrite?: boolean;
   doubleSide?: boolean;
   renderOrder?: number;
+  /** Clear glass that shows the city behind it. */
+  transmission?: boolean;
 };
 
 export type LightDef = {
@@ -117,21 +119,6 @@ function placeBox(
   return geo;
 }
 
-function placeCyl(
-  radius: number,
-  height: number,
-  x: number,
-  y: number,
-  z: number,
-  rotZ = 0,
-) {
-  const geo = nonIndexed(new THREE.CylinderGeometry(radius, radius, height, 12));
-  const matrix = new THREE.Matrix4().makeRotationZ(rotZ);
-  matrix.setPosition(x, y, z);
-  geo.applyMatrix4(matrix);
-  return geo;
-}
-
 function lines(pairs: Array<[[number, number, number], [number, number, number]]>) {
   const position = new Float32Array(pairs.length * 6);
   pairs.forEach(([[ax, ay, az], [bx, by, bz]], index) => {
@@ -198,22 +185,6 @@ function gridLines(
   return lines(pairs);
 }
 
-function gradientBackdrop(width: number, height: number) {
-  const geometry = new THREE.PlaneGeometry(width, height, 1, 20);
-  const position = geometry.attributes.position;
-  const colors = new Float32Array(position.count * 3);
-  for (let i = 0; i < position.count; i += 1) {
-    const y = position.getY(i) / (height / 2);
-    const horizon = Math.exp(-((y - 0.02) ** 2) * 14);
-    const lift = (y + 1) / 2;
-    colors[i * 3] = 0.045 + lift * 0.03 + horizon * 0.48;
-    colors[i * 3 + 1] = 0.028 + lift * 0.015 + horizon * 0.2;
-    colors[i * 3 + 2] = 0.02 + horizon * 0.05;
-  }
-  geometry.setAttribute("color", new THREE.BufferAttribute(colors, 3));
-  return geometry;
-}
-
 function contactEllipse() {
   const canvas = document.createElement("canvas");
   canvas.width = 128;
@@ -278,77 +249,6 @@ function floorRings(
   }
   if (!pairs.length) return null;
   return lines(pairs);
-}
-
-let chairCloth: THREE.BufferGeometry | null = null;
-let chairMetal: THREE.BufferGeometry | null = null;
-let chairOutline: THREE.BufferGeometry | null = null;
-
-function chairParts() {
-  if (chairCloth && chairMetal && chairOutline) {
-    return { cloth: chairCloth, metal: chairMetal, outline: chairOutline };
-  }
-  const seat = placeBox(0.42, 0.04, 0.42, 0, 0.48, 0.02);
-  const back = nonIndexed(new THREE.BoxGeometry(0.42, 0.4, 0.028));
-  const backMatrix = new THREE.Matrix4().makeRotationX(-0.07);
-  backMatrix.setPosition(0, 0.7, -0.18);
-  back.applyMatrix4(backMatrix);
-  chairCloth = merge([seat, back]);
-  seat.dispose();
-  back.dispose();
-  const legs: THREE.BufferGeometry[] = [];
-  const inset = 0.15;
-  for (const [lx, lz] of [
-    [-inset, -0.12],
-    [inset, -0.12],
-    [-inset, 0.16],
-    [inset, 0.16],
-  ] as const) {
-    legs.push(placeCyl(0.011, 0.48, lx, 0.24, lz));
-  }
-  chairMetal = merge(legs);
-  legs.forEach((leg) => leg.dispose());
-
-  const seatEdge = new THREE.EdgesGeometry(new THREE.BoxGeometry(0.42, 0.04, 0.42));
-  seatEdge.applyMatrix4(new THREE.Matrix4().makeTranslation(0, 0.48, 0.02));
-  const backEdge = new THREE.EdgesGeometry(new THREE.BoxGeometry(0.42, 0.4, 0.028));
-  const edgeMatrix = new THREE.Matrix4().makeRotationX(-0.07);
-  edgeMatrix.setPosition(0, 0.7, -0.18);
-  backEdge.applyMatrix4(edgeMatrix);
-  chairOutline = merge([nonIndexed(seatEdge), nonIndexed(backEdge)]);
-  seatEdge.dispose();
-  backEdge.dispose();
-  return { cloth: chairCloth, metal: chairMetal, outline: chairOutline };
-}
-
-function addChair(
-  pieces: PieceDef[],
-  x: number,
-  z: number,
-  rotY: number,
-  start: number,
-) {
-  const { cloth, metal, outline } = chairParts();
-  const shared = {
-    position: [x, 0, z] as [number, number, number],
-    rotation: [0, rotY, 0] as [number, number, number],
-    start,
-    travel: [0, -0.16, 0] as [number, number, number],
-    shared: true,
-  };
-  pieces.push({
-    ...shared,
-    geometry: cloth,
-    edgeLines: outline,
-    material: "cloth",
-    renderOrder: 2,
-  });
-  pieces.push({
-    ...shared,
-    geometry: metal,
-    material: "brass",
-    renderOrder: 2,
-  });
 }
 
 function towerMassing(
@@ -775,155 +675,74 @@ function growth(): Subject {
 function boardroom(): Subject {
   const pieces: PieceDef[] = [];
   pieces.push({
-    geometry: gradientBackdrop(14, 7.2),
-    material: "sky",
-    position: [0, 2.35, -4.7],
-    renderOrder: -2,
-    depthWrite: false,
-  });
-  pieces.push({
-    geometry: new THREE.BoxGeometry(10.5, 0.06, 8.2),
+    geometry: new THREE.BoxGeometry(9.5, 0.06, 7.4),
     material: "stone",
-    position: [0, 0.03, -0.6],
+    position: [0, 0.03, -0.2],
   });
-  const city = [
-    { x: -2.2, h: 1.05, w: 0.38, d: 0.28 },
-    { x: -1.2, h: 1.55, w: 0.44, d: 0.32 },
-    { x: -0.25, h: 1.2, w: 0.34, d: 0.28 },
-    { x: 0.7, h: 1.85, w: 0.42, d: 0.3 },
-    { x: 1.65, h: 1.15, w: 0.36, d: 0.26 },
-    { x: 2.4, h: 0.85, w: 0.32, d: 0.24 },
-  ];
-  city.forEach((tower) => {
-    pieces.push({
-      geometry: new THREE.BoxGeometry(tower.w, tower.h, tower.d),
-      material: "glass",
-      position: [tower.x, tower.h / 2, -3.75],
-      opacity: 0.62,
-      edges: true,
-      renderOrder: 1,
-    });
-  });
-  pieces.push({
-    geometry: new THREE.PlaneGeometry(7.4, 2.7),
-    material: "glass",
-    position: [0, 1.4, -2.55],
-    opacity: 0.14,
-    depthWrite: false,
-    doubleSide: true,
+  const glass = {
+    material: "glass" as const,
+    transmission: true,
     renderOrder: 3,
+    depthWrite: false,
+  };
+  pieces.push({
+    ...glass,
+    geometry: new THREE.PlaneGeometry(6.4, 2.55),
+    position: [0, 1.38, -1.85],
   });
-  const framePairs: Array<[[number, number, number], [number, number, number]]> = [
+  pieces.push({
+    ...glass,
+    geometry: new THREE.PlaneGeometry(4.2, 2.55),
+    position: [-3.2, 1.38, 0.2],
+    rotation: [0, Math.PI / 2, 0],
+  });
+  pieces.push({
+    ...glass,
+    geometry: new THREE.PlaneGeometry(4.2, 2.55),
+    position: [3.2, 1.38, 0.2],
+    rotation: [0, Math.PI / 2, 0],
+  });
+  const frame: Array<[[number, number, number], [number, number, number]]> = [
     [
-      [-3.7, 0.06, -2.55],
-      [-3.7, 2.75, -2.55],
+      [-3.2, 0.08, -1.85],
+      [-3.2, 2.66, -1.85],
     ],
     [
-      [3.7, 0.06, -2.55],
-      [3.7, 2.75, -2.55],
+      [3.2, 0.08, -1.85],
+      [3.2, 2.66, -1.85],
     ],
     [
-      [-3.7, 2.75, -2.55],
-      [3.7, 2.75, -2.55],
+      [-3.2, 2.66, -1.85],
+      [3.2, 2.66, -1.85],
+    ],
+    [
+      [-1.05, 0.08, -1.84],
+      [-1.05, 2.66, -1.84],
+    ],
+    [
+      [1.05, 0.08, -1.84],
+      [1.05, 2.66, -1.84],
     ],
   ];
-  pieces.push({ geometry: lines(framePairs), material: "line", opacity: 0.55 });
-
-  pieces.push({
-    geometry: new THREE.PlaneGeometry(4.6, 2.15),
-    material: "shadow",
-    position: [0, 0.07, 0],
-    rotation: [-Math.PI / 2, 0, 0],
-    depthWrite: false,
-    renderOrder: 1,
-  });
-  pieces.push({
-    geometry: new THREE.BoxGeometry(0.56, 0.72, 0.5),
-    material: "steel",
-    position: [-1.35, 0.39, 0],
-    edges: true,
-    start: 0.02,
-  });
-  pieces.push({
-    geometry: new THREE.BoxGeometry(0.56, 0.72, 0.5),
-    material: "steel",
-    position: [1.35, 0.39, 0],
-    edges: true,
-    start: 0.04,
-  });
-  pieces.push({
-    geometry: new THREE.BoxGeometry(5.48, 0.018, 1.4),
-    material: "brass",
-    position: [0, 0.745, 0],
-    start: 0.06,
-  });
-  pieces.push({
-    geometry: new THREE.BoxGeometry(5.35, 0.055, 1.28),
-    material: "timber",
-    position: [0, 0.782, 0],
-    edges: true,
-    start: 0.08,
-  });
-  pieces.push({
-    geometry: new THREE.BoxGeometry(4.4, 0.006, 0.028),
-    material: "brass",
-    position: [0, 0.814, 0],
-    start: 0.12,
-  });
-
-  const sideX = [-1.7, -0.57, 0.57, 1.7];
-  sideX.forEach((x, index) => {
-    addChair(pieces, x, 0.98, Math.PI, 0.16 + index * 0.03);
-    addChair(pieces, x, -0.98, 0, 0.18 + index * 0.03);
-  });
-  addChair(pieces, 2.95, 0, Math.PI / 2, 0.28);
-  addChair(pieces, -2.95, 0, -Math.PI / 2, 0.3);
-
-  [-1.55, 0, 1.55].forEach((x, index) => {
-    pieces.push({
-      geometry: placeCyl(0.008, 0.85, x, 2.05, 0),
-      material: "brass",
-      start: 0.34 + index * 0.04,
-      travel: [0, 0.2, 0],
-    });
-    pieces.push({
-      geometry: new THREE.CylinderGeometry(0.16, 0.18, 0.06, 24),
-      material: "brass",
-      position: [x, 1.6, 0],
-      edges: true,
-      start: 0.36 + index * 0.04,
-      travel: [0, 0.18, 0],
-    });
-    pieces.push({
-      geometry: new THREE.SphereGeometry(0.045, 16, 12),
-      material: "glow",
-      position: [x, 1.54, 0],
-      start: 0.4 + index * 0.04,
-    });
-  });
-
+  pieces.push({ geometry: lines(frame), material: "line", opacity: 0.45 });
   return {
     pieces,
-    lights: [
-      { position: [-1.55, 1.48, 0], color: 0xffc48a, intensity: 14, distance: 4.8 },
-      { position: [0, 1.48, 0], color: 0xffc48a, intensity: 16, distance: 5 },
-      { position: [1.55, 1.48, 0], color: 0xffc48a, intensity: 14, distance: 4.8 },
-    ],
-    particles: { center: [0, 1.3, -0.4], spread: [6, 1.6, 4], count: 180 },
+    lights: [],
+    particles: { center: [0, 1.2, 0], spread: [1, 1, 1], count: 0 },
     camera: {
-      position: [3.15, 2.45, 5.35],
-      target: [0, 0.92, -1.05],
+      position: [0.55, 1.52, 3.25],
+      target: [0, 0.78, -0.45],
       fov: 32,
-      drift: 0.04,
-      narrowTarget: [0.2, 1.05, -0.7],
+      drift: 0.06,
+      narrowTarget: [0.15, 0.84, -0.2],
     },
     icon: {
-      position: [3.5, 2.55, 3.35],
-      target: [0, 0.7, -0.2],
+      position: [2.15, 1.55, 2.35],
+      target: [0, 0.55, -0.1],
       fov: 34,
       drift: 0,
     },
-    pace: 1.15,
+    pace: 1.2,
   };
 }
 

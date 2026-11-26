@@ -32,7 +32,9 @@ The site shows the poster when `prefers-reduced-motion: reduce` is set, and it d
 
 ## 3D studies
 
-Every hero model is original procedural geometry in `components/effects/subjects.ts`, drawn with [three.js](https://github.com/threejs/three.js) (MIT License: https://github.com/threejs/three.js/blob/master/LICENSE). No downloaded mesh, glTF, texture, or scan is used. Nothing depicts a person.
+Hero studies are drawn with [three.js](https://github.com/threejs/three.js) (MIT License: https://github.com/threejs/three.js/blob/master/LICENSE). Nothing depicts a person.
+
+The fractional boardroom uses two CC0 models and one CC0 panorama from [Poly Haven](https://polyhaven.com/license) (public domain, no attribution required). They are packed into `public/models/boardroom.glb` (Draco mesh compression, textures resized) and `public/media/city-window.jpg`, and loaded only when that study is on screen.
 
 | Page | Subject | Source | License |
 | --- | --- | --- | --- |
@@ -40,6 +42,6 @@ Every hero model is original procedural geometry in `components/effects/subjects
 | /construction | Structural steel frame and tower crane, floors assembling | Original procedural geometry | Original work. Renderer: three.js, MIT |
 | /real-estate | Site plan and massing model on a parcel | Original procedural geometry | Original work. Renderer: three.js, MIT |
 | /business | Ascending layered plates for capital planning | Original procedural geometry | Original work. Renderer: three.js, MIT |
-| /fractional | Executive boardroom: table, chairs, pendant lights, city beyond glass | Original procedural geometry | Original work. Renderer: three.js, MIT |
+| /fractional | Executive boardroom: long wood table, high-back leather chairs, glass walls, city beyond the glass | [Wooden Table 01](https://polyhaven.com/a/WoodenTable_01) and [Dining Chair 02](https://polyhaven.com/a/dining_chair_02), CC0. City: [Joburg Central Sunset](https://polyhaven.com/a/sunset_jhbcentral), CC0. Draco-compressed in `public/models/boardroom.glb` | CC0 / public domain. Renderer: three.js, MIT |
 | /software | Layered system architecture of panels and nodes | Original procedural geometry | Original work. Renderer: three.js, MIT |
 | /about | Blueprint grid that eases into a solid building mass | Original procedural geometry | Original work. Renderer: three.js, MIT |

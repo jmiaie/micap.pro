@@ -46,6 +46,9 @@ type View = {
   particles: THREE.Points | null;
   particleMat: THREE.ShaderMaterial | null;
   extraLights: THREE.Light[];
+  furniture: THREE.Group | null;
+  furnGen: number;
+  holdReady: boolean;
   shown: string;
   pending: ShapeName | null;
   transition: "out" | "in" | null;
@@ -233,6 +236,21 @@ function createMaterial(name: MaterialName, piece: PieceDef) {
     });
     return material;
   }
+  if (piece.transmission) {
+    return new THREE.MeshPhysicalMaterial({
+      color: 0xe8d8c6,
+      metalness: 0,
+      roughness: 0.045,
+      transmission: 0.92,
+      thickness: 0.06,
+      ior: 1.45,
+      transparent: true,
+      opacity: 1,
+      envMapIntensity: 1.25,
+      side: THREE.DoubleSide,
+      depthWrite: false,
+    });
+  }
   const physical = new THREE.MeshStandardMaterial({
     roughness: 0.35,
     metalness: 0.4,
@@ -348,7 +366,7 @@ function releaseContent(view: View) {
       const mesh = node as THREE.Mesh;
       if (mesh.geometry && !mesh.userData.shared) mesh.geometry.dispose();
       const material = mesh.material;
-      if (!material) return;
+      if (!material || mesh.userData.shared) return;
       const list = Array.isArray(material) ? material : [material];
       for (const item of list) item.dispose();
     });
@@ -363,6 +381,132 @@ function releaseContent(view: View) {
   }
   for (const light of view.extraLights) view.scene.remove(light);
   view.extraLights = [];
+  if (view.furniture) {
+    view.content.remove(view.furniture);
+    view.furniture = null;
+  }
+  view.furnGen += 1;
+  view.holdReady = false;
+}
+
+type BoardroomKit = {
+  table: THREE.Object3D;
+  chair: THREE.Object3D;
+  city: THREE.Texture;
+  halfX: number;
+  halfZ: number;
+};
+
+let boardroomKit: Promise<BoardroomKit> | null = null;
+
+function loadBoardroom() {
+  if (boardroomKit) return boardroomKit;
+  boardroomKit = (async () => {
+    const [{ GLTFLoader }, { DRACOLoader }, { RectAreaLightUniformsLib }] = await Promise.all([
+      import("three/examples/jsm/loaders/GLTFLoader.js"),
+      import("three/examples/jsm/loaders/DRACOLoader.js"),
+      import("three/examples/jsm/lights/RectAreaLightUniformsLib.js"),
+    ]);
+    RectAreaLightUniformsLib.init();
+    const draco = new DRACOLoader();
+    draco.setDecoderPath("/draco/");
+    const loader = new GLTFLoader();
+    loader.setDRACOLoader(draco);
+    const [gltf, city] = await Promise.all([
+      loader.loadAsync("/models/boardroom.glb"),
+      new THREE.TextureLoader().loadAsync("/media/city-window.jpg"),
+    ]);
+    draco.dispose();
+    city.colorSpace = THREE.SRGBColorSpace;
+    city.anisotropy = 4;
+    const table = gltf.scene.getObjectByName("Table");
+    const chair = gltf.scene.getObjectByName("Chair");
+    if (!table || !chair) throw new Error("Boardroom model is missing a mesh");
+    const tune = (root: THREE.Object3D, darken: number) => {
+      root.traverse((node) => {
+        const mesh = node as THREE.Mesh;
+        if (!mesh.isMesh || Array.isArray(mesh.material)) return;
+        mesh.userData.shared = true;
+        const material = mesh.material as THREE.MeshStandardMaterial;
+        if (material.color && darken !== 1) material.color.multiplyScalar(darken);
+        material.envMapIntensity = 1.15;
+      });
+    };
+    tune(table, 0.42);
+    tune(chair, 1);
+    const raw = new THREE.Box3().setFromObject(table);
+    table.scale.setScalar(0.76 / (raw.getSize(new THREE.Vector3()).y || 1));
+    table.updateMatrixWorld(true);
+    const fitted = new THREE.Box3().setFromObject(table);
+    table.position.x -= (fitted.min.x + fitted.max.x) / 2;
+    table.position.y -= fitted.min.y;
+    table.position.z -= (fitted.min.z + fitted.max.z) / 2;
+    table.updateMatrixWorld(true);
+    const size = new THREE.Box3().setFromObject(table).getSize(new THREE.Vector3());
+    return { table, chair, city, halfX: size.x / 2, halfZ: size.z / 2 };
+  })().catch((error) => {
+    boardroomKit = null;
+    throw error;
+  });
+  return boardroomKit;
+}
+
+function seatChair(kit: BoardroomKit, x: number, z: number, rotY: number) {
+  const chair = kit.chair.clone(true);
+  chair.position.set(x, 0, z);
+  chair.rotation.y = rotY;
+  chair.traverse((node) => {
+    node.userData.shared = true;
+  });
+  return chair;
+}
+
+async function attachBoardroom(view: View) {
+  const gen = view.furnGen;
+  try {
+    const kit = await loadBoardroom();
+    if (gen !== view.furnGen || view.shown !== "boardroom") return;
+    const group = new THREE.Group();
+    const table = kit.table.clone(true);
+    table.traverse((node) => {
+      node.userData.shared = true;
+    });
+    group.add(table);
+    const xs = [-kit.halfX * 0.58, 0, kit.halfX * 0.58];
+    const near = kit.halfZ + 0.18;
+    for (const x of xs) {
+      group.add(seatChair(kit, x, near, Math.PI));
+      group.add(seatChair(kit, x, -near, 0));
+    }
+    const city = new THREE.Mesh(
+      new THREE.SphereGeometry(14, 48, 32),
+      new THREE.MeshBasicMaterial({
+        map: kit.city,
+        side: THREE.BackSide,
+        depthWrite: false,
+      }),
+    );
+    city.renderOrder = -2;
+    group.add(city);
+    const warm = new THREE.RectAreaLight(0xffd7b0, 16, 1.8, 0.46);
+    warm.position.set(0, 1.95, 0.05);
+    warm.lookAt(0, 0.7, 0);
+    const fill = new THREE.RectAreaLight(0xffedd4, 6, 1.3, 0.7);
+    fill.position.set(0.2, 1.65, 1.15);
+    fill.lookAt(0, 0.55, -0.2);
+    group.add(warm, fill);
+    view.content.add(group);
+    view.furniture = group;
+    view.holdReady = false;
+    view.painted = false;
+    requestFrame();
+  } catch (error) {
+    console.error(error);
+    if (gen === view.furnGen) {
+      view.holdReady = false;
+      requestFrame();
+    }
+  }
 }
 
 function buildParticles(view: View, subject: ReturnType<typeof subjectFor>) {
@@ -430,6 +574,10 @@ function buildContents(view: View, shape: ShapeName) {
   buildParticles(view, subject);
   applyCamera(view, subject);
   view.shown = shape;
+  if (shape === "boardroom") {
+    view.holdReady = true;
+    void attachBoardroom(view);
+  }
 }
 
 function createView(canvas: HTMLCanvasElement, spec: SpecRef): View {
@@ -460,6 +608,9 @@ function createView(canvas: HTMLCanvasElement, spec: SpecRef): View {
     particles: null,
     particleMat: null,
     extraLights: [],
+    furniture: null,
+    furnGen: 0,
+    holdReady: false,
     shown: "",
     pending: null,
     transition: null,
@@ -609,7 +760,7 @@ function drawView(view: View, dt: number) {
   view.ctx.setTransform(1, 0, 0, 1, 0, 0);
   view.ctx.clearRect(0, 0, width, height);
   view.ctx.drawImage(buffer, 0, 0, width, height);
-  if (!view.painted) {
+  if (!view.painted && !view.holdReady) {
     view.painted = true;
     view.spec.current.onStatus?.("ready");
   }
