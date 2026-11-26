@@ -4,51 +4,49 @@ import type { ShapeName } from "@/lib/effects";
 const strokes: Record<ShapeName, ReactNode> = {
   skyline: (
     <>
-      <path d="M6 50h52" />
-      <path d="M10 50V34h8v16M22 50V22h10v28M36 50V28h8v22M48 50V18h8v32" />
-      <path d="M14 40h4M26 32h4M40 36h4M52 28h4" />
+      <path d="M6 52h52" />
+      <path d="M10 52V36h6V28h4v24M24 52V24h8V16h4v36M40 52V30h7V22h4v30" />
     </>
   ),
-  tower: (
+  frame: (
     <>
-      <path d="M18 52h28" />
-      <path d="M22 52V14h20v38" />
-      <path d="M26 22h12M26 30h12M26 38h12M26 46h12" />
-      <path d="M28 14V8h8v6" />
+      <path d="M14 52V16M26 52V16M38 52V16M14 28h24M14 40h24M14 16h24" />
+      <path d="M44 18h12M44 18v6M50 14v28" />
     </>
   ),
-  network: (
+  boardroom: (
     <>
-      <path d="M14 22l18 8 16-10M14 22L22 44l20 6M32 30l10 20" />
-      <circle cx="14" cy="22" r="3" fill="currentColor" stroke="none" />
-      <circle cx="32" cy="30" r="3.2" fill="currentColor" stroke="none" />
-      <circle cx="48" cy="20" r="3" fill="currentColor" stroke="none" />
-      <circle cx="22" cy="44" r="2.6" fill="currentColor" stroke="none" />
-      <circle cx="42" cy="50" r="2.6" fill="currentColor" stroke="none" />
+      <path d="M14 30h36v10H14z" />
+      <path d="M18 30v-6h4v6M30 30v-6h4v6M42 30v-6h4v6M18 40v6h4v-6M30 40v6h4v-6M42 40v6h4v-6" />
+      <path d="M32 8v10M29 18h6" />
     </>
   ),
-  lattice: (
+  stack: (
     <>
-      <path d="M12 16h40M12 32h40M12 48h40M16 12v40M32 12v40M48 12v40" />
-      <circle cx="16" cy="16" r="2.2" fill="currentColor" stroke="none" />
-      <circle cx="32" cy="32" r="2.2" fill="currentColor" stroke="none" />
-      <circle cx="48" cy="16" r="2.2" fill="currentColor" stroke="none" />
-      <circle cx="16" cy="48" r="2.2" fill="currentColor" stroke="none" />
-      <circle cx="48" cy="48" r="2.2" fill="currentColor" stroke="none" />
+      <path d="M12 46h32l6-6H18zM14 34h32l6-6H20zM16 22h32l6-6H22z" />
+      <circle cx="24" cy="40" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="36" cy="28" r="1.6" fill="currentColor" stroke="none" />
+      <circle cx="28" cy="16" r="1.6" fill="currentColor" stroke="none" />
     </>
   ),
   growth: (
     <>
       <path d="M8 52h48" />
-      <path d="M12 52V40h6v12M22 52V32h6v20M32 52V26h6v26M42 52V16h6v36" />
-      <path d="M15 40l10-8 10-6 10-10" />
+      <path d="M12 52v-6h6v6M20 52V40h6v12M28 52V34h6v18M36 52V24h6v28M44 52V16h6v36" />
+      <path d="M15 46l8-6 8-6 8-8 8-10" />
     </>
   ),
   parcel: (
     <>
-      <path d="M8 40h48v12H8z" />
-      <path d="M14 40V26h12v14M30 40V18h10v22M42 40V30h8v10" />
-      <path d="M32 40V28" />
+      <path d="M8 18h48v30H8z" />
+      <path d="M8 32h48M28 18v30" />
+      <path d="M14 36h10v8H14zM32 22h8v12h-8zM34 40h12v6H34z" />
+    </>
+  ),
+  blueprint: (
+    <>
+      <path d="M8 14h48M8 28h48M8 42h48M8 56h48M12 10v48M28 10v48M44 10v48" strokeDasharray="2 2" />
+      <path d="M30 50V28h10v22M33 28V18h4v10" />
     </>
   ),
 };

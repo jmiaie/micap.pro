@@ -52,35 +52,37 @@ export function CinematicHero({
         className={
           scroll
             ? "sticky top-[4.25rem] h-[calc(100svh-4.25rem)] overflow-hidden bg-ink text-cream"
-            : "relative flex min-h-[calc(100svh-4.25rem)] flex-col overflow-hidden bg-ink text-cream"
+            : "relative overflow-hidden bg-ink text-cream sm:min-h-[calc(100svh-4.25rem)]"
         }
       >
-        <img
-          src={media.poster}
-          srcSet={media.srcSet}
-          sizes="100vw"
-          alt=""
-          width={media.width}
-          height={media.height}
-          fetchPriority="high"
-          loading="eager"
-          decoding="async"
-          className="absolute inset-0 h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-ink/50" />
-        {unsupported ? <AmbientVideo media={media} priority /> : null}
-        {effect.mode === "build" ? (
-          <BuildOnScroll {...visual} />
-        ) : effect.mode === "dismantle" ? (
-          <DismantleReassemble {...visual} />
-        ) : (
-          <ParticleDissolveHero
-            {...visual}
-            cycle={effect.mode === "dissolve" ? "pulse" : undefined}
+        <div className="relative h-[46vh] min-h-[16rem] sm:absolute sm:inset-0 sm:h-auto sm:min-h-0">
+          <img
+            src={media.poster}
+            srcSet={media.srcSet}
+            sizes="100vw"
+            alt=""
+            width={media.width}
+            height={media.height}
+            fetchPriority="high"
+            loading="eager"
+            decoding="async"
+            className="absolute inset-0 h-full w-full object-cover"
           />
-        )}
-        <div className="pointer-events-none absolute inset-0 z-[2] bg-gradient-to-r from-ink via-ink/75 to-ink/15 lg:via-ink/45" />
-        <div className="relative z-10 mt-auto flex w-full max-w-page flex-1 flex-col justify-end px-6 py-14 sm:px-10 sm:py-16 lg:px-12 lg:py-20">
+          <div className="absolute inset-0 bg-ink/50" />
+          {unsupported ? <AmbientVideo media={media} priority /> : null}
+          {effect.mode === "build" ? (
+            <BuildOnScroll {...visual} />
+          ) : effect.mode === "dismantle" ? (
+            <DismantleReassemble {...visual} />
+          ) : (
+            <ParticleDissolveHero
+              {...visual}
+              cycle={effect.mode === "dissolve" ? "pulse" : undefined}
+            />
+          )}
+        </div>
+        <div className="pointer-events-none absolute inset-0 z-[2] hidden bg-gradient-to-r from-ink via-ink/75 to-ink/15 sm:block lg:via-ink/45" />
+        <div className="relative z-10 flex w-full max-w-page flex-col justify-end px-6 py-10 sm:absolute sm:inset-0 sm:mt-auto sm:py-16 lg:px-12 lg:py-20">
           <div className="pointer-events-auto w-full max-w-xl border border-cream/20 bg-ink/65 p-6 backdrop-blur-md sm:p-8">
             <p className="text-xs font-medium uppercase tracking-eyebrow text-brass-soft">
               {eyebrow}

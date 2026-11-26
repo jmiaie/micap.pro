@@ -11,7 +11,7 @@ type Active = {
 };
 
 const fallback: Active = {
-  shape: "network",
+  shape: "boardroom",
   index: "01",
   title: "Fractional Executive Services",
 };

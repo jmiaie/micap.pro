@@ -2,11 +2,12 @@ import type { Practice } from "@/lib/site";
 
 export type ShapeName =
   | "skyline"
-  | "tower"
-  | "network"
-  | "lattice"
+  | "frame"
+  | "boardroom"
+  | "stack"
   | "growth"
-  | "parcel";
+  | "parcel"
+  | "blueprint";
 
 export type PaletteName = "micap";
 
@@ -48,10 +49,10 @@ export const palettes: Record<
 };
 
 export const practiceShapes = {
-  fractional: "network",
-  software: "lattice",
+  fractional: "boardroom",
+  software: "stack",
   business: "growth",
-  construction: "tower",
+  construction: "frame",
   "real-estate": "parcel",
 } as const satisfies Record<Practice["slug"], ShapeName>;
 
@@ -59,45 +60,45 @@ export const homeEffect: EffectConfig = {
   mode: "rise",
   shape: "skyline",
   palette: "micap",
-  particleCount: 3000,
-  label: "Decorative skyline assembling from blocks and particles",
+  particleCount: 800,
+  label: "Class A+ multifamily massing model",
 };
 
 const divisionEffects: Record<Practice["slug"], EffectConfig> = {
   fractional: {
-    mode: "build",
-    shape: "network",
+    mode: "rise",
+    shape: "boardroom",
     palette: "micap",
-    particleCount: 2000,
-    label: "Decorative network assembling",
+    particleCount: 480,
+    label: "Executive boardroom",
   },
   software: {
-    mode: "dissolve",
-    shape: "lattice",
+    mode: "rise",
+    shape: "stack",
     palette: "micap",
-    particleCount: 3400,
-    label: "Decorative lattice dissolving into particles",
+    particleCount: 520,
+    label: "Layered system architecture",
   },
   business: {
-    mode: "build",
+    mode: "rise",
     shape: "growth",
     palette: "micap",
-    particleCount: 1800,
-    label: "Decorative chart assembling",
+    particleCount: 480,
+    label: "Layered capital structure",
   },
   construction: {
     mode: "build",
-    shape: "tower",
+    shape: "frame",
     palette: "micap",
-    particleCount: 2600,
-    label: "Decorative tower assembling from floors",
+    particleCount: 640,
+    label: "Structural steel frame and tower crane",
   },
   "real-estate": {
-    mode: "dismantle",
+    mode: "rise",
     shape: "parcel",
     palette: "micap",
-    particleCount: 2400,
-    label: "Decorative parcel separating and reassembling",
+    particleCount: 480,
+    label: "Parcel site plan and massing model",
   },
 };
 

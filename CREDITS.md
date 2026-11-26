@@ -30,35 +30,16 @@ Delivered files:
 
 The site shows the poster when `prefers-reduced-motion: reduce` is set, and it does not request the video file in that case.
 
-## WebGL studies
+## 3D studies
 
-The hero and division studies in `components/effects/` adapt techniques from Meng To’s open-source skills (area-weighted surface samples, a shared erosion function for the solid and the grains, rigid part assembly where the wire leads the solid, and one renderer shared across cards). They are not copies of those demos. The skills are MIT-licensed:
+Every hero model is original procedural geometry in `components/effects/subjects.ts`, drawn with [three.js](https://github.com/threejs/three.js) (MIT License: https://github.com/threejs/three.js/blob/master/LICENSE). No downloaded mesh, glTF, texture, or scan is used. Nothing depicts a person.
 
-- https://github.com/MengTo/Skills/tree/main/agent-skills/3d/hover-particle-dissolve
-- https://github.com/MengTo/Skills/tree/main/agent-skills/3d/3d-feature-objects
-- https://github.com/MengTo/Skills/tree/main/agent-skills/3d/3d-construction-sequence
-- https://github.com/MengTo/Skills/blob/main/LICENSE
-
-```
-MIT License
-
-Copyright (c) 2026 Meng To
-
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
-
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
-```
+| Page | Subject | Source | License |
+| --- | --- | --- | --- |
+| Home | Class A+ multifamily tower massing | Original procedural geometry | Original work. Renderer: three.js, MIT |
+| /construction | Structural steel frame and tower crane, floors assembling | Original procedural geometry | Original work. Renderer: three.js, MIT |
+| /real-estate | Site plan and massing model on a parcel | Original procedural geometry | Original work. Renderer: three.js, MIT |
+| /business | Ascending layered plates for capital planning | Original procedural geometry | Original work. Renderer: three.js, MIT |
+| /fractional | Executive boardroom: table, chairs, pendant lights, city beyond glass | Original procedural geometry | Original work. Renderer: three.js, MIT |
+| /software | Layered system architecture of panels and nodes | Original procedural geometry | Original work. Renderer: three.js, MIT |
+| /about | Blueprint grid that eases into a solid building mass | Original procedural geometry | Original work. Renderer: three.js, MIT |

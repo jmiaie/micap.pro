@@ -1,5 +1,6 @@
+import { BlueprintStudy } from "@/components/effects/BlueprintStudy";
 import { PracticeProof } from "@/components/PracticeProof";
-import { CONTACT_EMAIL } from "@/lib/site";
+import { CONTACT_EMAIL, media } from "@/lib/site";
 
 /**
  * Dark ember field with one amber rake. The about ambient video stays off
@@ -19,6 +20,12 @@ export function AboutHero() {
           style={{ transform: "translate3d(0, 0, 0) rotate(-18deg)" }}
         />
         <div className="absolute inset-0 bg-[linear-gradient(98deg,rgba(10,4,0,0.94)_0%,rgba(12,4,0,0.82)_30%,rgba(16,6,0,0.42)_52%,rgba(16,6,0,0.08)_74%,transparent_100%)]" />
+        <BlueprintStudy
+          poster={media.about.poster}
+          srcSet={media.about.srcSet}
+          width={media.about.width}
+          height={media.about.height}
+        />
       </div>
 
       <div className="relative z-10 mx-auto flex min-h-[calc(100svh-4.25rem)] max-w-page flex-col justify-center px-6 py-16 sm:px-10 sm:py-20">

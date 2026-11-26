@@ -24,7 +24,9 @@ type RuntimeModule = typeof import("@/components/effects/runtime");
 function whenIdle(run: () => void) {
   let cancel = () => {};
   const start = () => {
-    const id = window.setTimeout(run, 280);
+    const narrow = window.matchMedia("(max-width: 767px)").matches;
+    const delay = narrow ? 2400 : 360;
+    const id = window.setTimeout(run, delay);
     cancel = () => window.clearTimeout(id);
   };
   if (document.readyState === "complete") start();
@@ -155,8 +157,10 @@ export function useEffectView(
     host?.addEventListener("pointercancel", onLeave);
 
     let onScroll: (() => void) | undefined;
+    let scrollQueued = false;
     if (scrollRef) {
-      onScroll = () => {
+      const readScroll = () => {
+        scrollQueued = false;
         const track = scrollRef.current;
         if (!track) return;
         const rect = track.getBoundingClientRect();
@@ -172,6 +176,11 @@ export function useEffectView(
         }
         spec.current.scroll = next;
         wake();
+      };
+      onScroll = () => {
+        if (scrollQueued) return;
+        scrollQueued = true;
+        window.requestAnimationFrame(readScroll);
       };
       onScroll();
       window.addEventListener("scroll", onScroll, { passive: true });
@@ -214,6 +223,7 @@ export function EffectCanvas({
       aria-hidden="true"
       data-effect-mode={props.mode}
       data-effect-shape={props.shape}
+      data-effect-ready={ready ? "true" : "false"}
       className={`${className ?? "absolute inset-0 h-full w-full"} touch-pan-y motion-safe:transition-opacity motion-safe:duration-700 ${
         ready ? "opacity-100" : "opacity-0"
       }`}
