@@ -199,7 +199,7 @@ export const practices: Practice[] = [
     ],
     background: [
       "The business practice works on how a portfolio of initiatives is sequenced, staffed, and paid for.",
-      "That advice sits next to capital-program experience of over $25 million in annual spend: the cost of getting the sequence wrong, and the discipline of keeping it right.",
+      "That advice sits next to capital-program experience of over $25 million in annual spend on a Class A+ multifamily portfolio of over $3 billion: the cost of getting the sequence wrong, and the discipline of keeping it right.",
     ],
   },
   {
@@ -251,8 +251,8 @@ export const practices: Practice[] = [
       },
     ],
     background: [
-      "The construction practice brings owner’s-representative experience on a Class A+ portfolio of over $3 billion.",
-      "Project size in that work is over $250 million. Annual spend is over $25 million, across over 3,600 units and 30+ commercial assets: construction management, value engineering, and cost-overrun prevention. These figures describe practice capability. They are not a client roster.",
+      "The construction practice brings owner’s-representative experience on a Class A+ multifamily portfolio of over $3 billion.",
+      "Project size in that work is over $250 million. Annual spend on that portfolio is over $25 million, across over 3,600 units and 30+ commercial doors: construction management, value engineering, and cost-overrun prevention. These figures describe practice capability. They are not a client roster.",
     ],
   },
   {
@@ -305,7 +305,7 @@ export const practices: Practice[] = [
     ],
     background: [
       "The real estate practice advises on capital, acquisitions, and value-add for multifamily and commercial property.",
-      "That work draws on owner’s-side experience with a Class A+ portfolio of over $3 billion: project size over $250 million, over $25 million in annual spend, over 3,600 units, and 30+ commercial assets.",
+      "That work draws on owner’s-representative experience with a Class A+ multifamily portfolio of over $3 billion: project size over $250 million, over $25 million in annual spend on that portfolio, over 3,600 units, and 30+ commercial doors.",
       "Micap advises on the decision. This page is not an offer of securities and not a brokerage solicitation.",
     ],
   },
@@ -407,12 +407,12 @@ export const firmCapabilities = [
   {
     term: "Owner’s representation",
     detail:
-      "Experience on a Class A+ portfolio of over $3 billion, from the documents through the field.",
+      "Experience on a Class A+ multifamily portfolio of over $3 billion, from the documents through the field.",
   },
   {
     term: "Capital programs",
     detail:
-      "Project size over $250 million, and over $25 million in annual spend, across over 3,600 units and 30+ commercial assets.",
+      "Project size over $250 million, and over $25 million in annual spend on that portfolio, across over 3,600 units and 30+ commercial doors.",
   },
   {
     term: "Construction",

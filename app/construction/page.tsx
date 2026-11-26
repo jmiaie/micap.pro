@@ -5,11 +5,11 @@ import { practiceBySlug } from "@/lib/site";
 const practice = practiceBySlug.construction;
 
 const figures = [
-  { value: "$3B+", label: "Class A+ portfolio, as owner’s representative" },
+  { value: "$3 billion+", label: "Class A+ multifamily portfolio, as owner’s representative" },
   { value: "$250M+", label: "Project size" },
   { value: "$25M+", label: "Annual spend" },
   { value: "3,600+", label: "Units in the program" },
-  { value: "30+", label: "Commercial assets" },
+  { value: "30+", label: "Commercial doors" },
 ];
 
 export const metadata = pageMetadata({
@@ -27,10 +27,11 @@ export default function ConstructionPage() {
             Scale of the work
           </h2>
           <p className="mt-4 max-w-prose text-base leading-relaxed text-muted">
-            Owner’s-representative experience on a Class A+ portfolio of over
-            $3 billion. Project size is over $250 million, with over $25
-            million in annual spend. These figures describe practice
-            capability. They are not a client roster.
+            Owner’s-representative experience on a Class A+ multifamily
+            portfolio of over $3 billion. Project size is over $250 million.
+            Annual spend on that portfolio is over $25 million. The same
+            portfolio includes 30+ commercial doors. These figures describe
+            practice capability. They are not a client roster.
           </p>
           <dl className="mt-10 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5">
             {figures.map((figure) => (
