@@ -9,9 +9,11 @@ import { fractionalGroups, media, practices, type Practice } from "@/lib/site";
 export function PracticeView({
   practice,
   children,
+  hero,
 }: {
   practice: Practice;
   children?: ReactNode;
+  hero?: ReactNode;
 }) {
   const others = practices.filter((item) => item.slug !== practice.slug);
   const url = `https://micap.pro/${practice.slug}/`;
@@ -92,26 +94,28 @@ export function PracticeView({
           },
         }}
       />
-      <CinematicHero
-        effect={divisionEffect(practice.slug)}
-        eyebrow={practice.eyebrow}
-        title={practice.title}
-        lede={practice.lede}
-        media={media[practice.media]}
-      >
-        <Link
-          href="/contact/"
-          className="inline-flex min-h-12 items-center bg-cream px-5 text-sm font-semibold text-ink hover:bg-white"
+      {hero ?? (
+        <CinematicHero
+          effect={divisionEffect(practice.slug)}
+          eyebrow={practice.eyebrow}
+          title={practice.title}
+          lede={practice.lede}
+          media={media[practice.media]}
         >
-          Discuss this work
-        </Link>
-        <Link
-          href="/#divisions"
-          className="inline-flex min-h-12 items-center border border-cream/30 px-5 text-sm font-semibold text-cream hover:border-cream"
-        >
-          All divisions
-        </Link>
-      </CinematicHero>
+          <Link
+            href="/contact/"
+            className="inline-flex min-h-12 items-center bg-cream px-5 text-sm font-semibold text-ink hover:bg-white"
+          >
+            Discuss this work
+          </Link>
+          <Link
+            href="/#divisions"
+            className="inline-flex min-h-12 items-center border border-cream/30 px-5 text-sm font-semibold text-cream hover:border-cream"
+          >
+            All divisions
+          </Link>
+        </CinematicHero>
+      )}
 
       {practice.covers.length > 0 ? (
         <section className="mx-auto max-w-page px-6 py-16 sm:px-10 sm:py-24">

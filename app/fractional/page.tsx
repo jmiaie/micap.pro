@@ -1,4 +1,6 @@
+import { BoardroomHero } from "@/components/BoardroomHero";
 import { PracticeView } from "@/components/PracticeView";
+import { boardroomSrcSet } from "@/lib/boardroomPhotos";
 import { pageMetadata } from "@/lib/metadata";
 import { fractionalGroups, practiceBySlug } from "@/lib/site";
 
@@ -12,7 +14,26 @@ export const metadata = pageMetadata({
 
 export default function FractionalPage() {
   return (
-    <PracticeView practice={practice}>
+    <PracticeView
+      practice={practice}
+      hero={
+        <>
+          <link
+            rel="preload"
+            as="image"
+            type="image/avif"
+            imageSrcSet={boardroomSrcSet(1, "avif")}
+            imageSizes="100vw"
+            fetchPriority="high"
+          />
+          <BoardroomHero
+            eyebrow={practice.eyebrow}
+            title={practice.title}
+            lede={practice.lede}
+          />
+        </>
+      }
+    >
       <section
         id="fractional-executive-services"
         className="scroll-mt-24 border-y border-line bg-bg"

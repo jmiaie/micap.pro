@@ -34,7 +34,19 @@ The site shows the poster when `prefers-reduced-motion: reduce` is set, and it d
 
 Hero studies are drawn with [three.js](https://github.com/threejs/three.js) (MIT License: https://github.com/threejs/three.js/blob/master/LICENSE). Nothing depicts a person.
 
-The fractional boardroom uses two CC0 models and one CC0 panorama from [Poly Haven](https://polyhaven.com/license) (public domain, no attribution required). They are packed into `public/models/boardroom.glb` (Draco mesh compression, textures resized) and `public/media/city-window.jpg`, and loaded only when that study is on screen.
+The home division study for Fractional Executive Services still uses two CC0 models and one CC0 panorama from [Poly Haven](https://polyhaven.com/license) (public domain, no attribution required): [Wooden Table 01](https://polyhaven.com/a/WoodenTable_01), [Dining Chair 02](https://polyhaven.com/a/dining_chair_02), and [Joburg Central Sunset](https://polyhaven.com/a/sunset_jhbcentral). They are packed into `public/models/boardroom.glb` and `public/media/city-window.jpg`. The fractional page itself does not use them.
+
+## Fractional boardroom photographs
+
+The `/fractional/` hero is a photograph, not a 3D scene. Candidate 1 is the default. On this sandbox branch, `?boardroom=2` and `?boardroom=3` show the other two. Attribution is not required by either license. Names are recorded here and are not printed on the site.
+
+| Candidate | Page | Source | Photographer | License |
+| --- | --- | --- | --- | --- |
+| 1 | `/fractional/` | https://www.pexels.com/photo/glass-office-table-with-city-view-7377671/ | Gustavo Galeano Maz | [Pexels License](https://www.pexels.com/license/) — free commercial use, attribution not required |
+| 2 | `/fractional/?boardroom=2` | https://images.unsplash.com/photo-1431540015161-0bf868a2d407 | Benjamin Child (https://unsplash.com/@bchild311) | [Unsplash License](https://unsplash.com/license) — free commercial use, attribution not required |
+| 3 | `/fractional/?boardroom=3` | https://www.pexels.com/photo/brown-wooden-table-with-chairs-12934597/ | Andrew Patrick Photo | [Pexels License](https://www.pexels.com/license/) — free commercial use, attribution not required |
+
+Delivered files are AVIF and WebP at 640, 1280, 1920, and 2560 pixels wide in `public/media/boardroom/`.
 
 | Page | Subject | Source | License |
 | --- | --- | --- | --- |
@@ -42,6 +54,6 @@ The fractional boardroom uses two CC0 models and one CC0 panorama from [Poly Hav
 | /construction | Structural steel frame and tower crane, floors assembling | Original procedural geometry | Original work. Renderer: three.js, MIT |
 | /real-estate | Site plan and massing model on a parcel | Original procedural geometry | Original work. Renderer: three.js, MIT |
 | /business | Ascending layered plates for capital planning | Original procedural geometry | Original work. Renderer: three.js, MIT |
-| /fractional | Executive boardroom: long wood table, high-back leather chairs, glass walls, city beyond the glass | [Wooden Table 01](https://polyhaven.com/a/WoodenTable_01) and [Dining Chair 02](https://polyhaven.com/a/dining_chair_02), CC0. City: [Joburg Central Sunset](https://polyhaven.com/a/sunset_jhbcentral), CC0. Draco-compressed in `public/models/boardroom.glb` | CC0 / public domain. Renderer: three.js, MIT |
+| /fractional | Photograph of a conference room. No 3D on this page. | See “Fractional boardroom photographs” below | Pexels License or Unsplash License |
 | /software | Layered system architecture of panels and nodes | Original procedural geometry | Original work. Renderer: three.js, MIT |
 | /about | Blueprint grid that eases into a solid building mass | Original procedural geometry | Original work. Renderer: three.js, MIT |

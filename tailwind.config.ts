@@ -40,6 +40,10 @@ const config: Config = {
           from: { transform: "translate3d(-10%, 0, 0) rotate(-18deg)" },
           to: { transform: "translate3d(12%, 0, 0) rotate(-18deg)" },
         },
+        "boardroom-drift": {
+          from: { transform: "scale(1.04) translate3d(0, 0, 0)" },
+          to: { transform: "scale(1.1) translate3d(-1.6%, -1%, 0)" },
+        },
       },
       animation: {
         "rise-1": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) both",
@@ -48,6 +52,7 @@ const config: Config = {
         "rise-4": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.24s both",
         "rise-5": "rise 0.95s cubic-bezier(0.16, 1, 0.3, 1) 0.32s both",
         rake: "rake 18s ease-in-out infinite alternate",
+        "boardroom-drift": "boardroom-drift 26s ease-in-out infinite alternate",
       },
     },
   },
