@@ -1,6 +1,6 @@
 /**
- * Portfolio and annual-spend wording follows the softened figures.
- * Unit and asset counts are the ones already published on the site.
+ * Portfolio wording matches the figures published on main.
+ * Annual spend is $25M+. The door count is 30+ commercial doors.
  * No project-size figure is shown here.
  */
 export const practiceProof = [
@@ -9,7 +9,7 @@ export const practiceProof = [
     label: "Class A+ portfolio, as owner’s representative",
   },
   {
-    value: "~$27M",
+    value: "$25M+",
     label: "Annual spend",
   },
   {
@@ -17,8 +17,8 @@ export const practiceProof = [
     label: "Units in the program",
   },
   {
-    value: "30",
-    label: "Commercial assets",
+    value: "30+",
+    label: "Commercial doors",
   },
 ] as const;
 
