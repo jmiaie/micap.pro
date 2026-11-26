@@ -1,10 +1,9 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import { CinematicHero } from "@/components/effects/CinematicHero";
 import { InquiryBand } from "@/components/InquiryBand";
 import { JsonLd } from "@/components/JsonLd";
-import { divisionEffect } from "@/lib/effects";
-import { fractionalGroups, media, practices, type Practice } from "@/lib/site";
+import { SplitHero } from "@/components/SplitHero";
+import { fractionalGroups, practices, type Practice } from "@/lib/site";
 
 export function PracticeView({
   practice,
@@ -92,12 +91,11 @@ export function PracticeView({
           },
         }}
       />
-      <CinematicHero
-        effect={divisionEffect(practice.slug)}
+      <SplitHero
         eyebrow={practice.eyebrow}
         title={practice.title}
         lede={practice.lede}
-        media={media[practice.media]}
+        mediaKey={practice.media}
       >
         <Link
           href="/contact/"
@@ -111,7 +109,7 @@ export function PracticeView({
         >
           All divisions
         </Link>
-      </CinematicHero>
+      </SplitHero>
 
       {practice.covers.length > 0 ? (
         <section className="mx-auto max-w-page px-6 py-16 sm:px-10 sm:py-24">
