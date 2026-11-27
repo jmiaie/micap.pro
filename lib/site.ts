@@ -98,14 +98,14 @@ export const practices: Practice[] = [
   },
   {
     slug: "software",
-    nav: "Software",
+    nav: "Software Development & Digital Transformations",
     index: "02",
-    title: "Software Development & Tech Consulting",
+    title: "Software Development & Digital Transformations",
     card: "Scoping, architecture, and delivery advice for enterprises deciding what software is worth building.",
     eyebrow: "02  ·  Software",
     lede: "Technical counsel for clients who need software judged the way a capital project is judged: scope, risk, and what it will cost to run.",
     description:
-      "Software development and technology consulting from Micap LLC. Scoping, architecture, and delivery advice, with lab and AI engineering at sister firm Micap AI.",
+      "Software Development & Digital Transformations from Micap LLC. Scoping, architecture, and delivery advice, with lab and AI engineering at sister firm Micap AI.",
     media: "software",
     covers: [
       {
@@ -204,14 +204,14 @@ export const practices: Practice[] = [
   },
   {
     slug: "construction",
-    nav: "Construction",
+    nav: "Construction Services",
     index: "04",
-    title: "Construction Consulting",
+    title: "Construction Services",
     card: "Owner’s representation for capital projects: scope, cost, schedule, and cost-overrun prevention.",
     eyebrow: "04  ·  Construction",
     lede: "Owner’s-representative support for capital projects. Scope, cost, schedule, and the work of keeping an overrun from becoming the plan.",
     description:
-      "Construction consulting from Micap LLC. Owner’s representation, construction management, value engineering, and cost-overrun prevention.",
+      "Construction Services from Micap LLC. Owner’s representation, construction management, value engineering, and cost-overrun prevention.",
     media: "construction",
     covers: [
       {
@@ -257,14 +257,14 @@ export const practices: Practice[] = [
   },
   {
     slug: "real-estate",
-    nav: "Real Estate",
+    nav: "Real Estate Advising & Strategy",
     index: "05",
-    title: "Real Estate Consulting",
+    title: "Real Estate Advising & Strategy",
     card: "Capital, acquisitions, and value-add for owners of portfolios and single assets.",
     eyebrow: "05  ·  Real Estate",
     lede: "Advice on capital, acquisitions, and value-add. For clients deciding what to buy, what to improve, and what a number is actually worth.",
     description:
-      "Real estate consulting from Micap LLC. Capital, acquisitions, and value-add for enterprise and private owners.",
+      "Real Estate Advising & Strategy from Micap LLC. Capital, acquisitions, and value-add for enterprise and private owners.",
     media: "real-estate",
     covers: [
       {
@@ -400,7 +400,7 @@ export const firmCapabilities = [
       "Three clusters our executives step into and run: Leadership & Operations (CEO, COO), Technology & AI (CTO, CAIO, CXO), and Finance & Growth (CFO, CMO/GTM).",
   },
   {
-    term: "Software Development & Tech Consulting",
+    term: "Software Development & Digital Transformations",
     detail:
       "Python, TypeScript, AWS, Terraform, Docker, Kubernetes, and PostgreSQL. Lab and AI engineering sit with sister firm Micap AI.",
   },
@@ -448,15 +448,15 @@ export const organizationJsonLd = {
   areaServed: "Worldwide",
   knowsAbout: [
     "Fractional Executive Services",
-    "Software consulting",
+    "Software Development & Digital Transformations",
     "Business consulting",
     "Fractional CEO",
     "Fractional executive leadership",
     "Fractional CXO",
     "Fractional CAIO",
     "Go-to-market leadership",
-    "Construction consulting",
-    "Real estate consulting",
+    "Construction Services",
+    "Real Estate Advising & Strategy",
     "Owner's representation",
     "Capital planning",
   ],

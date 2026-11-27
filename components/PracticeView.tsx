@@ -196,7 +196,7 @@ export function PracticeView({
                   <span className="text-xs font-semibold uppercase tracking-eyebrow text-brass">
                     {item.index}
                   </span>
-                  <span className="mt-4 font-display text-2xl font-medium text-ink">
+                  <span className="mt-4 text-balance font-display text-2xl font-medium leading-tight text-ink">
                     {item.nav}
                   </span>
                   <span className="mt-3 text-sm leading-relaxed text-muted">

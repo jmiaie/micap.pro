@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { InquiryBand } from "@/components/InquiryBand";
 import { SplitHero } from "@/components/SplitHero";
+import { boardroomSrcSet } from "@/lib/boardroomPhotos";
 import { pageMetadata } from "@/lib/metadata";
 import { firmCapabilities, media, practices, whyMicap } from "@/lib/site";
 
@@ -57,26 +58,51 @@ export default function HomePage() {
         <ul className="mt-12 grid gap-6 md:grid-cols-2">
           {practices.map((practice) => {
             const poster = media[practice.media];
+            const fractionalTile = practice.slug === "fractional";
             return (
               <li key={practice.slug} className="group relative border border-line bg-panel">
                 <div className="relative aspect-[16/10] overflow-hidden bg-ink">
-                  <img
-                    src={poster.poster}
-                    srcSet={poster.srcSet}
-                    sizes="(min-width: 768px) 40vw, 100vw"
-                    alt=""
-                    width={poster.width}
-                    height={poster.height}
-                    loading="lazy"
-                    decoding="async"
-                    className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:group-hover:scale-[1.03]"
-                  />
+                  {fractionalTile ? (
+                    <picture>
+                      <source
+                        type="image/avif"
+                        srcSet={boardroomSrcSet(1, "avif")}
+                        sizes="(min-width: 768px) 40vw, 100vw"
+                      />
+                      <img
+                        src="/media/boardroom/1-1280.webp"
+                        srcSet={boardroomSrcSet(1, "webp")}
+                        sizes="(min-width: 768px) 40vw, 100vw"
+                        alt=""
+                        width={2560}
+                        height={1707}
+                        loading="lazy"
+                        decoding="async"
+                        data-division="fractional"
+                        data-photo="boardroom-1"
+                        className="h-full w-full object-cover object-[center_42%] motion-safe:transition-transform motion-safe:duration-700 motion-safe:group-hover:scale-[1.03]"
+                      />
+                    </picture>
+                  ) : (
+                    <img
+                      src={poster.poster}
+                      srcSet={poster.srcSet}
+                      sizes="(min-width: 768px) 40vw, 100vw"
+                      alt=""
+                      width={poster.width}
+                      height={poster.height}
+                      loading="lazy"
+                      decoding="async"
+                      data-division={practice.slug}
+                      className="h-full w-full object-cover motion-safe:transition-transform motion-safe:duration-700 motion-safe:group-hover:scale-[1.03]"
+                    />
+                  )}
                 </div>
                 <div className="p-6 sm:p-8">
                   <p className="text-xs font-semibold uppercase tracking-eyebrow text-brass">
                     {practice.index}
                   </p>
-                  <h3 className="mt-3 font-display text-3xl font-medium tracking-tight text-ink">
+                  <h3 className="mt-3 text-balance font-display text-3xl font-medium leading-tight tracking-tight text-ink">
                     <Link
                       href={`/${practice.slug}/`}
                       className="after:absolute after:inset-0"

@@ -3,10 +3,10 @@
 Marketing site for **Micap LLC**, a multinational business and technology consultancy. Five divisions:
 
 1. Fractional Executive Services
-2. Software Development & Tech Consulting
+2. Software Development & Digital Transformations
 3. Business Consulting
-4. Construction Consulting
-5. Real Estate Consulting (capital, acquisitions, value-add)
+4. Construction Services
+5. Real Estate Advising & Strategy (capital, acquisitions, value-add)
 
 The sister firm [Micap AI](https://micap.ai) is the Software Lab and AI Engineering practice. It is linked from the software division. The published contact address is `info@micap.pro` (the `CONTACT_EMAIL` constant in `lib/site.ts`). That address must exist as a Google Workspace alias or user before mail to it will arrive. Adding the alias does not change DNS.
 

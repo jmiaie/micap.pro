@@ -104,7 +104,7 @@ export default function AboutPage() {
                 <span className="text-xs font-semibold uppercase tracking-eyebrow text-brass">
                   {practice.index}
                 </span>
-                <span className="mt-3 font-display text-2xl font-medium text-ink">
+                <span className="mt-3 text-balance font-display text-2xl font-medium leading-tight text-ink">
                   {practice.title}
                 </span>
               </Link>
