@@ -1,31 +1,28 @@
 # Media credits
 
-Footage on micap.pro is royalty-free stock used under the **Mixkit Stock Video Free License**.
+Hero footage and posters on micap.pro are royalty-free stock used under the **Pexels License**.
 
-- License: commercial and non-commercial use, at no cost.
-- Attribution: not required. Credits are recorded here so the source and license stay auditable.
-- Confirmation: each clip’s Mixkit page displays the Free License (not the Restricted License, which is personal use only).
-- License references:
-  - https://mixkit.co/license/#videoFree
-  - https://mixkit.co/license/modal/videoFree/ — “Items under the Mixkit Stock Video Free License can be used in your commercial and non-commercial projects, for free.”
-  - https://mixkit.co/free-stock-video/ — Mixkit states that free-license videos require no attribution.
+- License: https://www.pexels.com/license/ — free for commercial and non-commercial use, including on a website. Attribution is not required. Modification is allowed.
+- Attribution: not shown on the pages. Credits are recorded here so the source, creator, license, and verified location stay auditable.
+- Location: each city below is taken from that item’s Pexels title, description, or location field. No clip is used twice.
+- Files in `public/media/` are trimmed or, for Construction, generated from a still, scaled to 1920×1080, stripped of audio, and re-encoded (H.264 MP4 and VP9 WebM, 24 fps) for web delivery. Posters are WebP frames from those encodes. The original files were not resold.
 
-Files in `public/media/` are trimmed, scaled to 1920×1080, stripped of audio, and re-encoded (H.264 MP4 and VP9 WebM) for web delivery. Posters are WebP frames from those encodes. The license permits modification. The original files were not resold.
+| Page | Clip | Verified location | Evidence | Creator | Source page |
+| --- | --- | --- | --- | --- | --- |
+| Home | Downtown Phoenix | Phoenix, Arizona | Title “Downtown Phoenix.” Description: “Stunning aerial view of Phoenix skyline at sunset, capturing modern architecture.” | Advancer Drones | https://www.pexels.com/video/downtown-phoenix-19656009/ |
+| Software | San Diego City at Night | San Diego, California | Title “San Diego City at Night.” Description: “Stunning time-lapse of San Diego city skyline at dusk over calm waters.” | Kindel Media | https://www.pexels.com/video/san-diego-city-at-night-9003940/ |
+| Business | Drone Footage of Skyscrapers in Downtown San Francisco | San Francisco, California | Title “Drone Footage of Skyscrapers in Downtown San Francisco.” Description: “Drone footage of San Francisco's urban skyline with skyscrapers.” | Offgrideli | https://www.pexels.com/video/drone-footage-of-skyscrapers-in-downtown-san-francisco-13175374/ |
+| Construction | Construction workers on scaffolding | San Francisco, California | Location field: “San Francisco, CA, United States.” Description: “Construction workers on scaffolding at an urban renovation site in San Francisco.” Encoded from the still because the previous aerial shows the City of London skyline, and no free commercial building-site video named an approved city without another city’s skyline. | Abigail Sylvester | https://www.pexels.com/photo/construction-workers-standing-on-the-scaffolding-outside-of-a-building-in-city-17745340/ |
+| Real estate | Aerial View of Scenic Irvine Lake Community | Irvine, California | Title “Aerial View of Scenic Irvine Lake Community.” Description: “Discover the tranquil beauty of Irvine's lakefront homes and landscape.” | Griffin Wooldridge | https://www.pexels.com/video/aerial-view-of-scenic-irvine-lake-community-32278336/ |
+| About | Aerial View of Scenic Irvine Lakefront Properties | Irvine, California | Title “Aerial View of Scenic Irvine Lakefront Properties.” Description: “Drone footage showcasing stunning Irvine lake and residential areas.” | Griffin Wooldridge | https://www.pexels.com/video/aerial-view-of-scenic-irvine-lakefront-properties-32278327/ |
+| Contact | Drone Shot of the Street | Phoenix, Arizona | Title “Drone Shot of the Street.” Description: “Aerial footage showing the downtown skyline of Phoenix, Arizona.” | Advancer Drones | https://www.pexels.com/video/drone-shot-of-the-street-4046193/ |
 
-| Page | Clip | Source page | Master file used |
-| --- | --- | --- | --- |
-| Home | Flying slowly over a big city | https://mixkit.co/free-stock-video/flying-slowly-over-a-big-city-49806/ | https://assets.mixkit.co/videos/49806/49806-1080.mp4 |
-| Software | Movement in a city at night in an aerial shot | https://mixkit.co/free-stock-video/movement-in-a-city-at-night-in-an-aerial-shot-42343/ | https://assets.mixkit.co/videos/42343/42343-1080.mp4 |
-| Business | Office and apartment buildings | https://mixkit.co/free-stock-video/office-and-apartment-buildings-2065/ | https://assets.mixkit.co/videos/2065/2065-1080.mp4 |
-| Construction | Buildings under construction, aerial view | https://mixkit.co/free-stock-video/buildings-under-construction-aerial-view-4010/ | https://assets.mixkit.co/videos/4010/4010-1080.mp4 |
-| Real estate | Suburbs from above | https://mixkit.co/free-stock-video/suburbs-from-above-3417/ | https://assets.mixkit.co/videos/3417/3417-1080.mp4 |
-| About | View from above to houses in the suburbs | https://mixkit.co/free-stock-video/view-from-above-to-houses-in-the-suburbs-3420/ | https://assets.mixkit.co/videos/3420/3420-1080.mp4 |
-| Contact | Aerial shot of a busy avenue in the city | https://mixkit.co/free-stock-video/aerial-shot-of-a-busy-avenue-in-the-city-2034/ | https://assets.mixkit.co/videos/2034/2034-1080.mp4 |
+The four approved areas are all represented: Phoenix (Home and Contact, different clips), San Diego (Software), San Francisco (Business footage and the Construction still), and Irvine (Real estate and About, different clips).
 
 Delivered files:
 
-- `public/media/<page>.mp4` — H.264, 1920×1080, no audio, faststart
-- `public/media/<page>.webm` — VP9, 1920×1080, no audio
+- `public/media/<page>.mp4` — H.264, 1920×1080, 24 fps, no audio, faststart
+- `public/media/<page>.webm` — VP9, 1920×1080, 24 fps, no audio
 - `public/media/<page>-800.webp` and `<page>-1600.webp` — poster frames
 
 The site shows the poster when `prefers-reduced-motion: reduce` is set, and it does not request the video file in that case.
