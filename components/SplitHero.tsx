@@ -27,7 +27,7 @@ export function SplitHero({
           {eyebrow}
         </p>
         <div className="mt-5 h-px w-12 bg-brass-soft" aria-hidden="true" />
-        <h1 className="mt-6 max-w-[14ch] font-display text-[2.6rem] font-medium leading-[1.05] tracking-tight sm:text-5xl lg:text-[3.35rem]">
+        <h1 className="mt-6 max-w-[16ch] text-balance font-display text-[2.6rem] font-medium leading-[1.05] tracking-tight sm:max-w-[18ch] sm:text-5xl lg:text-[3.35rem]">
           {title}
         </h1>
         <p className="mt-6 max-w-prose text-base leading-relaxed text-cream/80 sm:text-lg">

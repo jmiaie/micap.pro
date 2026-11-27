@@ -24,7 +24,7 @@ export function SiteFooter() {
               <li key={practice.slug}>
                 <Link
                   href={`/${practice.slug}/`}
-                  className="text-sm font-medium text-ink hover:text-brass"
+                  className="text-sm font-medium leading-snug text-ink hover:text-brass"
                 >
                   {practice.title}
                 </Link>

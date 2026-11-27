@@ -52,31 +52,12 @@ export function SiteHeader() {
             LLC
           </span>
         </Link>
-
-        <nav className="hidden items-center gap-7 lg:flex" aria-label="Primary">
-          {links.map((link) => {
-            const current = isCurrent(pathname, link.href);
-            return (
-              <Link
-                key={link.href}
-                href={link.href}
-                aria-current={current ? "page" : undefined}
-                className={`text-sm font-medium ${
-                  current ? "text-ink" : "text-muted hover:text-ink"
-                }`}
-              >
-                {link.label}
-              </Link>
-            );
-          })}
-          <Link
-            href="/contact/"
-            className="inline-flex min-h-11 items-center bg-ink px-4 text-sm font-medium text-cream hover:bg-ink/90"
-          >
-            Contact
-          </Link>
-        </nav>
-
+        <Link
+          href="/contact/"
+          className="hidden min-h-11 items-center bg-ink px-4 text-sm font-medium text-cream hover:bg-ink/90 lg:inline-flex"
+        >
+          Contact
+        </Link>
         <button
           type="button"
           className="inline-flex min-h-11 min-w-11 items-center justify-center border border-line px-3 text-sm font-medium text-ink lg:hidden"
@@ -87,6 +68,26 @@ export function SiteHeader() {
           {open ? "Close" : "Menu"}
         </button>
       </div>
+      <nav className="hidden border-t border-line lg:block" aria-label="Primary">
+        <ul className="mx-auto flex max-w-page flex-wrap items-baseline gap-x-6 gap-y-2 px-6 py-3 sm:px-10">
+          {links.map((link) => {
+            const current = isCurrent(pathname, link.href);
+            return (
+              <li key={link.href} className="max-w-full">
+                <Link
+                  href={link.href}
+                  aria-current={current ? "page" : undefined}
+                  className={`inline-block text-sm font-medium leading-snug ${
+                    current ? "text-ink" : "text-muted hover:text-ink"
+                  }`}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
 
       {open ? (
         <nav
@@ -102,7 +103,7 @@ export function SiteHeader() {
                   <Link
                     href={link.href}
                     aria-current={current ? "page" : undefined}
-                    className="flex min-h-12 items-center font-display text-2xl font-medium text-ink"
+                    className="flex min-h-12 items-center py-2 font-display text-2xl font-medium leading-tight text-ink"
                   >
                     {link.label}
                   </Link>
