@@ -3,6 +3,7 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import {
+  BOARDROOM_DEFAULT,
   boardroomSrc,
   boardroomSrcSet,
   type BoardroomId,
@@ -15,19 +16,19 @@ type Props = {
 };
 
 function readChoice(): BoardroomId {
-  if (typeof window === "undefined") return 1;
+  if (typeof window === "undefined") return BOARDROOM_DEFAULT;
   const value = new URLSearchParams(window.location.search).get("boardroom");
-  if (value === "2" || value === "3") return Number(value) as BoardroomId;
-  return 1;
+  if (value === "1" || value === "backup") return 1;
+  return BOARDROOM_DEFAULT;
 }
 
 /**
- * Photographic stand-in for the fractional hero. `?boardroom=2` and
- * `?boardroom=3` exist on this sandbox branch so the three candidates
- * can be compared on the preview.
+ * Photographic stand-in for the fractional hero. The warm wood table is
+ * the default. `?boardroom=backup` (or `?boardroom=1`) shows the glass
+ * table on this sandbox branch.
  */
 export function BoardroomHero({ eyebrow, title, lede }: Props) {
-  const [choice, setChoice] = useState<BoardroomId>(1);
+  const [choice, setChoice] = useState<BoardroomId>(BOARDROOM_DEFAULT);
 
   useEffect(() => {
     setChoice(readChoice());
@@ -59,7 +60,7 @@ export function BoardroomHero({ eyebrow, title, lede }: Props) {
               width={2560}
               height={1707}
               data-boardroom={choice}
-              fetchPriority={choice === 1 ? "high" : "auto"}
+              fetchPriority={choice === BOARDROOM_DEFAULT ? "high" : "auto"}
               decoding="async"
               className="absolute inset-0 h-full w-full object-cover motion-safe:animate-boardroom-drift"
             />

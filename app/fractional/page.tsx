@@ -22,7 +22,7 @@ export default function FractionalPage() {
             rel="preload"
             as="image"
             type="image/avif"
-            imageSrcSet={boardroomSrcSet(1, "avif")}
+            imageSrcSet={boardroomSrcSet(3, "avif")}
             imageSizes="100vw"
             fetchPriority="high"
           />
