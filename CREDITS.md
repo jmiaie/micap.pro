@@ -29,3 +29,12 @@ Delivered files:
 - `public/media/<page>-800.webp` and `<page>-1600.webp` — poster frames
 
 The site shows the poster when `prefers-reduced-motion: reduce` is set, and it does not request the video file in that case.
+
+## Fractional hero photographs
+
+The Fractional Executive Services hero uses still photographs from Pexels under the Pexels License. Attribution is not required. The photographs were resized and encoded as AVIF and WebP. No people or logos are visible in the crop.
+
+| Role | Photographer | Pexels page | Pexels id | Files |
+| --- | --- | --- | --- | --- |
+| Default | Andrew Patrick Photo | https://www.pexels.com/photo/a-conference-room-with-a-table-and-chairs-8468919/ | 8468919 | `public/media/boardroom/3-{640,1280,1920,2560}.{avif,webp}` |
+| Backup (`?boardroom=backup` or `?boardroom=1`) | Gustavo Galeano Maz | https://www.pexels.com/photo/modern-conference-room-with-glass-table-and-chairs-3184339/ | 3184339 | `public/media/boardroom/1-{640,1280,1920,2560}.{avif,webp}` |
